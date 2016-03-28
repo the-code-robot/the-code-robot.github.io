@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Create a custom content type in Plone3</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">CodeRobot </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/create-a-custom-content-type-in-plone3.html" rel="bookmark"
+           title="Permalink to Create a custom content type in Plone3">Create a custom content type in Plone3</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2008-04-27T16:27:00+01:00">
+                Published: Sun 27 April 2008
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+<p>tags: <a href="/tag/plone.html">plone</a> </p>
+</footer><!-- /.post-info -->      <p><pre class="literal-block">
+paster create -t plone &lt;somepackage.somemodule&gt;
+</pre>
+<p>Then edit the buildout.cfg to record the egg in the:
+eggs section,(somepackage.somemodule)
+develop eggs section (src/somepackage.somemodule)
+and the instance zcml section (to put the zcml slug in)
+then:-</p>
+<pre class="literal-block">
+./bin/buildout -o
+</pre>
+<p>Create the initiailize function in the
+somepackage.somemodule.__init__.py file. Other examples say this is
+also the place where you can create a MessageFactory object.
+The initialize function makes reference to the content object being
+created so you need to have that created.</p>
+<pre class="literal-block">
+$&gt; mkdir content$&gt; cd content$&gt; touch contentthing.py
+</pre>
+<p>Also, it is suggested in the Optilude book that you create a config.py
+file to contain various constants to enable easier future reference.
+The body of the contentthing.py breaks down into a few sections.
+Firstly you define a schema for the content type. The schema defines
+the what parts the content type has, and what type of thing those parts
+are. The schema begins by copying the already existing general purpose
+schema using <em>atapi.ATContentTypeSchema.copy()</em> and to this you then add
+your own, using <em>atapi.Schema()</em>.
+Once the schema has been defined it has to be finalized. This requires
+hints as to whether or not the schema is folder-like, and whether or not
+conversations can be moved (don't understand this part).
+After the schema is in place one may then move on to define the
+content type class proper.
+The class inherits from <em>base.ATCTContent</em>.
+The class has a <em>schema</em> attribute. It should be no surprise that the
+schema is set to the one just created. The class is also given a
+<em>portal_type</em> attribute. This value is a string value, presumably used
+for UI purposes. The class also calls the <em>zope.interface.implements()</em>
+method. Previously you will have defined a zope style interface for the
+product. I did this, although I set the interface to <em>pass</em>. I'm not
+sure why the zope interface is required when there is already an
+Archetypes schema. Perhaps they are just preparing for the future?
+The class is next given a series of attributes. These attributes are
+made to have the same names as those created in the schema, but are all
+initialized using methods such as <em>atapi.ATFieldProperty()</em>.
+Finally, after trhe class has been defined, the module registers the
+class thus:
+<em>atapi.registerType(&lt;classname&gt;, PROJECTNAME)</em>
+At this stage, if you try to install the content type to plone, you
+should find that the restart succeeds, and that the product appears in
+the product section of the ZMI. However, the product will be invisible
+to Plone.
+We make the product visible to plone by going the the package's
+<em>configure.zcml</em> file and using the generic setup extension profile
+mechanism. A good example of this is on page 71 of the Professional
+Plone Development book.
+Restarting zope at this point will allow the product to appear in the
+&quot;Add New Products&quot; section of the &quot;Site Setup&quot; page in the Plone
+interface.
+Installing the product should proceed without error. The next hurdle
+will be that the product is not present in the &quot;Add new ...&quot; drop down
+menu in the Plone user interface.
+We make the product appear as addable in the UI by the simple
+expedient of going to the <em>profile/defaults/types/&lt;sometype&gt;.xml</em> and
+ensure that <em>global_allow</em> property is set to true.</p>
+</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

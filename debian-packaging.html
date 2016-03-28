@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Debian Packaging</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">CodeRobot </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/debian-packaging.html" rel="bookmark"
+           title="Permalink to Debian Packaging">Debian Packaging</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-27T14:44:00+01:00">
+                Published: Mon 27 June 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p>How I made a .deb file</p>
+<div></div><div><p>Create a directory</p>
+</div><div><p>mkdir foo</p>
+</div><div><p>Descend into it.</p>
+</div><div><p>cd foo</p>
+</div><div><p>Create a directory DEBIAN</p>
+</div><div><p>mkdir DEBIAN</p>
+</div><div><p>Descend into it.</p>
+</div><div><p>Create a text file called 'control'</p>
+</div><div><p>vim control</p>
+</div><div></div><div><p>Create key:value pairs as per
+http://www.debian.org/doc/debian-policy/ch-binary.html</p>
+</div><div></div><div><p>The postinst and prerm scripts also go in the DEBIAN directory.</p>
+</div><div><p>The actual install files go in the foo directory</p>
+</div><div></div><div><p>./foo</p>
+</div><div><p>./foo/DEBIAN</p>
+</div><div><p>./foo/DEBIAN/control</p>
+</div><div><p>./foo/DEBIAN/postinst</p>
+</div><div><p>./foo/DEBIAN/prerm</p>
+</div><div><p>./foo/bar.....</p>
+</div><div></div><div><p>Finally, go to the directory above foo and do:</p>
+</div><div></div><div><p>dpkg -b ./foo foo.deb and that is it! done!</p>
+</div><div></div><div></div></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
