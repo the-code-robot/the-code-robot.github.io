@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeRobot</title><link href="https://the-code-robot.github.io/" rel="alternate"></link><link href="https://the-code-robot.github.io/feeds/all.atom.xml" rel="self"></link><id>https://the-code-robot.github.io/</id><updated>2016-11-09T23:00:00+00:00</updated><entry><title>Not the monty hall anything</title><link href="https://the-code-robot.github.io/the-test.html" rel="alternate"></link><updated>2016-11-09T23:00:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2016-11-09:the-test.html</id><summary type="html">&lt;p&gt;Where is a test.
+And here it is again.
+And once more for luck.&lt;/p&gt;
+</summary><category term="fun"></category><category term="puzzles"></category></entry><entry><title>Vim security</title><link href="https://the-code-robot.github.io/vim-security.html" rel="alternate"></link><updated>2016-01-06T23:49:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2016-01-06:vim-security.html</id><summary type="html">&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;CRAZY: Just read &lt;a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html"&gt;https://glyph.twistedmatrix.com/2015/11/editor-malware.html&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;and &lt;a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/"&gt;https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/&lt;/a&gt;
+which both discuss some issues about text editor security.
+| TL,DR:&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;1. vim-plug is preferred to vundle&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;2. developers may be seen as high value targets for system compromise.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;3. beware git:// protocol&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="security"></category><category term="vim"></category><category term="vim-plug"></category><category term="vundle"></category></entry><entry><title>A Python Christmas present</title><link href="https://the-code-robot.github.io/a-python-christmas-present.html" rel="alternate"></link><updated>2015-12-22T00:33:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-22:a-python-christmas-present.html</id><summary type="html">&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Nose is my current Python testing framework of choice.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;When I'm doing TDD which is more or less all the time*, I'm capturing&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;logs and (shock horror) print statements and I commonly invoke nosetests
+in a very noisy way with the -sv switches.
+| A few days ago, I found myself thinking about writing an output&lt;/p&gt;
+&lt;p&gt;colourizer for nose when (gasp) it occurred to me that one might already
+exists. And, wonder of wonders, I was right.
+| I would like to introduce you to&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://pypi.python.org/pypi/rednose"&gt;rednose&lt;/a&gt;. It's nearly
+Christmas, the plugin (appropriately) is called 'rednose' and it
+represents the gift of visually interesting test results.
+| Rednose is easy to install, easy to invoke, and it works like a dream.&lt;/p&gt;
+&lt;p&gt;I was especially pleased with it's ability to colourize logs and stack
+traces.
+| Kudos to the developer &lt;a class="reference external" href="https://github.com/timbertson"&gt;https://github.com/timbertson&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;* If I'm not doing TDD I'm researching an unfamiliar API inside an&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;IPython/Jupyter notebook.&lt;/p&gt;
+</summary><category term="nose"></category><category term="rednose"></category><category term="test driven development"></category><category term="testing"></category></entry><entry><title>Jupyter notebooks</title><link href="https://the-code-robot.github.io/jupyter-notebooks.html" rel="alternate"></link><updated>2015-12-22T00:08:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-22:jupyter-notebooks.html</id><summary type="html">&lt;p&gt;&lt;p&gt;My typical working setup is a headless GNU/Linux VM which I access via
+ssh. This means that when I working in a newly initialized project
+environment and I want to pop up a Jupyter notebook I do this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+pip install jupyterjupyter notebook
+&lt;/pre&gt;
+&lt;p&gt;And bang! there I have a w3m text based browser, nicely colourized,
+but not what I was hoping for.
+Every month or so I go through this. And I have been trained to find
+the Jupyter config file or the IPython config file as was and edit it to
+suit.
+So this time the version of Jupyter which pip harvests for me is
+4.0.6. And could I find the configuration? No I could not.
+It turns out you have to generate the configuration before you can
+actually edit it:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+jupyter notebook --generate-config
+&lt;/pre&gt;
+&lt;p&gt;Once that is done, then you can&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;change the host from localhost to '0.0.0.0' and&lt;/li&gt;
+&lt;li&gt;change start browser by default to 'False'.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Oh, and look for the configuration in&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.jupyter
+&lt;/pre&gt;
+&lt;p&gt;.&lt;/p&gt;
+&lt;/p&gt;</summary><category term="ipython"></category><category term="jupyter"></category></entry><entry><title>Probability in business</title><link href="https://the-code-robot.github.io/probability-in-business.html" rel="alternate"></link><updated>2015-12-21T23:49:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-21:probability-in-business.html</id><summary type="html">&lt;p&gt;As someone who has put together quite a few business plans over the
+years, this short (4 minute) video from Prof Sam Savage struck me as
+quite insightful.
+For me it highlights the difference between those of us with a
+knowledge of the theory of probability and those who have really thought
+about the way probability matters manifest in daily life. (I'm somewhere
+in between, and probably (hmm interesting word choice) closer to the
+theoretical end).
+I notice that in the background, Prof Savage has a copy of Bernstein's
+&amp;quot;Against the Gods&amp;quot; which I am pleased also to own and to have read,
+although in any discussion on probability, it would be a crime not to
+mention &amp;quot;Fooled By Randomness&amp;quot; from Nassim Nicholas Taleb.
+And now that I'm thinking of statistical solecisms, the common theme
+between Savage, Bernstein and Taleb, I'm reminded of the joke about the
+goverment education minister who was often heard to complain of the
+large number of schools which were still below average.
+Enjoy the video.&lt;/p&gt;
+</summary><category term="business planning"></category><category term="probability"></category></entry><entry><title>Scrum and Working Code</title><link href="https://the-code-robot.github.io/scrum-and-working-code.html" rel="alternate"></link><updated>2015-12-21T23:19:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-21:scrum-and-working-code.html</id><summary type="html">&lt;p&gt;So I bought this machine for the production line.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Who'd you get it from?&lt;/em&gt;
+Acme. I told them what I needed, they would build a bit of it, show it
+to me and so it went, round and round until I got the machine installed
+on the line. Works well. Or rather it did.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;It's not working?&lt;/em&gt;
+No it works. It works just the way it always did. None of the parts
+wear out. It's a marvel really. But we got the new WhizzBang mark II six
+months ago. It sits in the line just in front of the Acme. Beautiful
+piece of kit. Spits out widgets a whole lot faster than the previous
+mark I model.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;And the Acme can't keep up?&lt;/em&gt;
+Yup. You got it. Never thought the WhizzBang people would ever be able
+to make faster machine and the new mark II is a sight to see. But I
+never thought to ask the Acme people to put a speed knob on the control
+panel.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Ah.&lt;/em&gt;
+Ah indeed. But I'm a resourceful guy. I thought maybe there was some
+other way to speed it up. Use a lighter lubricant, tighten up some
+spring tensioners, shorten the belt, or perhaps up the voltage a bit,
+maybe upgrade the motor. I asked Fred in maintenance to bring me up the
+manual for the Acme.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;And Fred had lost the manual?&lt;/em&gt;
+Close. Fred says he never got the manual. My fault really because I
+was so focussed on getting the Acme built, I guess asking for a manual
+just got overlooked. Anyway I got on the phone to Acme and asked them to
+send me one over. They said they would get right on it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;But they never did?&lt;/em&gt;
+Right again. Apparently when they went looking, there was a binder for
+the manual but there was nothing in it, just a note to ask Engineering.
+Apparently because our machine was a one-off, and I didn't specifically
+ask for a manual, nobody thought to make one. Apparently that's the way
+things are these days.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;You didn't give up that easily did you? Did you?&lt;/em&gt;
+Oh no. I'm a get-things-done kind of a guy. I got right back at them.
+I said OK, send me over the engineering drawings and I'll work out how
+this machine works myself. It might take me a while, but I can read a
+good set of plans pretty well. Yeah - I'll save you the bother. There
+were no plans.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Good grief.&lt;/em&gt;
+You won't believe how these guys worked over there at Acme. They
+tested everything - scales and calipers and stopwatches - you name it,
+they had it. They still had a test rig for the main motor assembly and
+their test results. That baby clocked 2500 rpm with a variance of less
+than 0.001%. I'll have to hand it to them, their tests looked pretty
+good. Somebody over there said every single part was tested. It's just
+that they haven't got a single piece of paper to tell me how the thing
+fits together.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Didn't you ask them how they built it without plans?&lt;/em&gt;
+I think they were getting a bit defensive. I didn't have to ask them.
+The guy in charge - a pretty smart guy - knew what I was thinking so he
+just started explaining how their system worked. Apparently they would
+build test rig, decide what answer they wanted and then build the part
+until it passed the test. Over and over again for every different part.
+And when they started bolting parts together, they would build a test
+rig for the assembly. They carried on like that until they had the whole
+thing built. And yes, they even had a test rig for the whole machine. I
+guess maybe that's part of the reason why the parts haven't worn out. He
+seemed pretty pleased about that.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;So what happened when you told them about your need for a speed
+control on the Acme you've got?&lt;/em&gt;
+The best they could come up with was to say that they would get
+Engineering to come up with some suggestions. Apparently some of the
+team who built my Acme are still there. But since I put my order in two
+years ago, a lot of these guys have moved on. Apparently two years is a
+long time in their line of work. When I asked them how they were going
+to do it without any documents they said that the machine itself was the
+documentation.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;So a sort of self-documenting machine?&lt;/em&gt;
+Kinda.&amp;nbsp; And to be fair, many of the parts have names etched into them
+like 'big_sprocket_for_main_drive' and
+'main_drive_axle_locking_assembly'. But it's like that physicist
+Feynman says, &lt;a class="reference external" href="https://haveabit.com/feynman/knowing-the-name-of-something/"&gt;don't mistake knowing the name of something as being the
+same as understanding what it actually
+does&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Is there any good news? You said these were intelligent people.&lt;/em&gt;
+Yes. They didn't need to disassemble my working Acme because they
+managed to find a perfect copy of all the components in their stock
+control system.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Well, that doesn't sound so bad. How is it working out?&lt;/em&gt;
+Not so good. The few remaining engineers who worked on my project are
+all more senior now and have been allocated to new clients. Because
+trying to guess how the machine works staring at a bench full of parts
+is pain in the neck, nobody has that much enthusiasm. It's certainly
+taking a long time.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;And the WhizzBang?&lt;/em&gt;
+Well the money I spent on the upgrade has been wasted. Nothing can go
+faster than the Acme.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Would you do anything differently in the future?&lt;/em&gt;
+I always thought that if I needed any changes I could go back to the
+maker. But when even the makers are unable to work out how they made the
+thing in the first place ... There's a lesson in there somewhere.&lt;/p&gt;
+</summary><category term="documentation generation"></category><category term="scrum"></category><category term="self documenting code"></category><category term="tdd"></category><category term="test driven development"></category><category term="testing"></category></entry><entry><title>Using Python unittest outside a testing environment</title><link href="https://the-code-robot.github.io/using-python-unittest-outside-a-testing-environment.html" rel="alternate"></link><updated>2015-12-21T22:28:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-21:using-python-unittest-outside-a-testing-environment.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Test frameworks are not just for testing code during development and
+deployment.
+Test frameworks may also be put to good use within your application.
+By way of example, consider the possibility of running diagnostics on
+a live application. Another possibility is checking the validity of an
+on-the-fly configuration change.
+The Python unittest library, part of the standard distribution can
+easily be incorporated into your live code.
+The code example below presents a toy example of a test case, which is
+then exercised by your application process. The outcome is a test result
+object which you can query and report on.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+import unittestclass TestMe(unittest.TestCase):&amp;nbsp;&amp;nbsp;&amp;nbsp; def test_this(self):&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; self.assertTrue(False)&amp;nbsp;&amp;nbsp;&amp;nbsp; def test_that(self):&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; self.assertTrue(True)loader = unittest.TestLoader()suite = loader.loadTestsFromTestCase(TestMe)result = unittest.TestResult()suite.run(result) # run actually returns result as well as populating itprint result
+&lt;/pre&gt;
+&lt;pre class="literal-block"&gt;
+::
+&lt;/pre&gt;
+&lt;div class="output_wrapper"&gt;&lt;div class="output"&gt;&lt;div class="output_area"&gt;&lt;div class="output_subarea output_text output_stream output_stdout"&gt;&lt;pre class="literal-block"&gt;
+&amp;lt;unittest .result.testresult=&amp;quot;&amp;quot; errors=&amp;quot;0&amp;quot; failures=&amp;quot;1&amp;quot; run=&amp;quot;2&amp;quot;&amp;gt;
+&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;The variable 'result' is an instance of unittest.TestResult() and has
+a rich set of attributes and methods as &lt;a class="reference external" href="https://docs.python.org/2/library/unittest.html#unittest.TestResult"&gt;documented
+here&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;</summary><category term="outside the box"></category><category term="python"></category><category term="testing"></category><category term="unittest"></category></entry><entry><title>Python3 Namespace Packages Using Wheels</title><link href="https://the-code-robot.github.io/python3-namespace-packages-using-wheels.html" rel="alternate"></link><updated>2015-12-06T23:28:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-06:python3-namespace-packages-using-wheels.html</id><summary type="html">&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;I was experimenting with Python3.4 and namespace packages.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Here's what I did.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;I created two completely separate repos, A and B.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;I had a top level namespace, toplevel.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;I created a directory structure:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;repoA/toplevel/libA/moda.py&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;repoA/setup.py&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;repoB/toplevel/libB/modb.py&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;repoB/setup.py&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;The setup.py files were very similar:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;from setuptools import setup&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;setup(&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; name = &amp;quot;toplevel libA&amp;quot;,&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; version = &amp;quot;0.1&amp;quot;,&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; packages = ['toplevel.libA']&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;and:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;from setuptools import setup&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;setup(&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; name = &amp;quot;toplevel libB&amp;quot;,&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; version = &amp;quot;0.1&amp;quot;,&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp; &amp;nbsp; packages = ['toplevel.libB']&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;To be able to work with the bdist_wheel extension to setuptools, I&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;had to use pip to install wheel.
+| pip install wheel&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Then in repoA and repoB it was possible to execute:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;python setup.py bdist_wheel -d /tmp/wheels&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;In this way, two wheels were created:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;/tmp/wheels/toplevel.libB-0.1-py3-none-any.whl&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;/tmp/wheels/toplevel.libA-0.1py3-none-any.whl&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I then created a third project repo which used these two wheel packages.
+| repoC/someotherproject&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;In this repo, after creating and virtual envirionment, it was possible&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;to install the two wheels:
+| pip install /tmp/wheels/toplevel.libB-0.1-py3-none-any.whl&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;pip install /tmp/wheels/toplevel.libA-0.1py3-none-any.whl&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the site-packages directory of the repoC environment there was a tree
+structure installed:
+| ./toplevel/liba&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; /libb&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Showing that libA and libB, although separately developed, were&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;available in the client project as a unified namespace. (Note that liba
+and libb could have been independently installed on different branches
+of sys.path and they would stilll appear to the interpreter as an
+integrated whole.)&lt;/p&gt;
+</summary><category term="namespace package"></category><category term="python3"></category><category term="wheel"></category></entry><entry><title>Getting started with Sphinx</title><link href="https://the-code-robot.github.io/getting-started-with-sphinx.html" rel="alternate"></link><updated>2015-12-05T07:59:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-05:getting-started-with-sphinx.html</id><summary type="html">&lt;p&gt;I really like &lt;a class="reference external" href="https://github.com/BurntSushi/pdoc"&gt;pdoc&lt;/a&gt; as a great
+lightweight python source code documentation tool.
+I like to invoke it:
+&lt;em&gt;PYTHONPATH=. pdoc --http --http-host 0.0.0.0 --http-port 8888
+--only-pypath&lt;/em&gt;
+I like to use &lt;a class="reference external" href="http://stackoverflow.com/questions/5334531/python-documentation-standard-for-docstring"&gt;ReST to format
+docstrings&lt;/a&gt;.
+Unfortunately I have not been able to get pdoc to display parameter
+lists as I would hope.
+(UPDATE: 20151205: pdoc will honour parameter lists created using
+Markdown.)
+So I switched to using Sphinx. It seems I am not alone in finding the
+&lt;a class="reference external" href="http://stackoverflow.com/questions/4616693/automatically-generating-documentation-for-all-python-package-contents"&gt;Sphinx documentation hard to
+use&lt;/a&gt;.
+After a bit of futzing around, this recipe meets my objective of
+having nice documentation with the power of Sphinx but the ease of pdoc.
+1. Install Sphinx.
+2. Invoke sphinx-apidoc -F -o dox
+3. cd to the dox directory.
+4. Edit conf.py to ensure that sys.path can find the module to be
+document.
+5. make html
+6. python3 -m http.server
+I hope it works for you.&lt;/p&gt;
+</summary><category term="documentation generation"></category><category term="pdoc"></category><category term="python"></category><category term="sphinx"></category></entry><entry><title>Python Logging</title><link href="https://the-code-robot.github.io/python-logging.html" rel="alternate"></link><updated>2015-08-29T22:21:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-08-29:python-logging.html</id><summary type="html">&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Just pulling together the best of the web on Python logging:&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="https://docs.python.org/2/library/logging.html"&gt;https://docs.python.org/2/library/logging.html&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;The standard library documentation.&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="http://pieces.openpolitics.com/2012/04/python-logging-best-practices/"&gt;http://pieces.openpolitics.com/2012/04/python-logging-best-practices/&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;Insightful and reviewed by Vinay Sajip.&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="http://victorlin.me/posts/2012/08/26/good-logging-practice-in-python"&gt;http://victorlin.me/posts/2012/08/26/good-logging-practice-in-python&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;Helpful tips on which logger levels to use.&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="http://stackoverflow.com/questions/15727420/using-python-logging-in-multiple-modules"&gt;http://stackoverflow.com/questions/15727420/using-python-logging-in-multiple-modules&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;Answer provided by Vinay Sajip.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="logging"></category><category term="python"></category></entry><entry><title>Android Studio up and running</title><link href="https://the-code-robot.github.io/android-studio-up-and-running.html" rel="alternate"></link><updated>2015-06-14T11:25:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-14:android-studio-up-and-running.html</id><summary type="html">&lt;p&gt;My standard development environment for native Android development has
+been Vim and Ant.&lt;/p&gt;
+&lt;p&gt;Today I finally took the plunge and got started with Android Studio
+(AS).&lt;/p&gt;
+&lt;p&gt;I ported in ZipZipBooks, which is my mobile record keeping application
+for HMRC with a view to giving at a bit of a refresh. Didn't take too
+long to get it up and running on AS.&lt;/p&gt;
+&lt;p&gt;Key issues:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The code for the existing project is in a Mercrurial repository. My
+first attempt to import the project, I went down the &amp;quot;Check out the
+project from version control&amp;quot; route, and chose Mercurial.
+Unfortunately this did not play niceley with Gradle. Instead, I found
+that I could instead start with the &amp;quot;Import Project&amp;quot; route. That
+allowed AS to convert my Ant build to Gradle.&lt;/li&gt;
+&lt;li&gt;Adding library dependencies for which &lt;a class="reference external" href="http://stackoverflow.com/a/18321935/4999639"&gt;this
+answer&lt;/a&gt; was very
+helpful;&lt;/li&gt;
+&lt;li&gt;I might need to get a faster/bigger/hotter/noisier laptop.&lt;/li&gt;
+&lt;li&gt;Running on Windows 8, there was no need to update any drivers for the
+physical Android devices on which I performed testing.&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="android"></category><category term="android studio"></category><category term="ant"></category><category term="gradle"></category><category term="zipzipbooks"></category></entry><entry><title>Reading vs Doing</title><link href="https://the-code-robot.github.io/reading-vs-doing.html" rel="alternate"></link><updated>2015-06-13T22:07:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-13:reading-vs-doing.html</id><summary type="html">&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;I was greatly enjoying reading &lt;a class="reference external" href="http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/"&gt;this article on coding&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;when I got to the section on Django and decided that maybe I should get
+back to my own Django project.&lt;/p&gt;
+</summary><category term="coding"></category><category term="django"></category></entry><entry><title>Django High Level Mind Map</title><link href="https://the-code-robot.github.io/django-high-level-mind-map.html" rel="alternate"></link><updated>2015-06-13T15:54:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-13:django-high-level-mind-map.html</id><summary type="html">&lt;p&gt;Mind maps really suit my way of organizing knowledge.
+Here is a link to pdf of my high-level Django mind map.
+&lt;a class="reference external" href="https://drive.google.com/open?id=0BwWsxITTn6NmbmVjSmFSMG5TZXc&amp;amp;authuser=1"&gt;Django High Level Mind
+Map&lt;/a&gt;
+Enjoy.&lt;/p&gt;
+</summary><category term="django"></category><category term="mind maps"></category></entry><entry><title>The Monty Hall Problem</title><link href="https://the-code-robot.github.io/the-monty-hall-problem.html" rel="alternate"></link><updated>2015-06-12T09:01:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-12:the-monty-hall-problem.html</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Monty_Hall_problem"&gt;Monty Hall problem&lt;/a&gt; is great
+fun.
+Here's how I rationalise it.
+There are three doors. I have to choose one. The chance that the door
+I pick is the correct one is one in three. The chance that one of the
+other doors is correct is two in three.
+Stop right there.
+Now ask yourself the question - is Monty Hall running around behind
+the doors possibly changing the location of the prize? Nope. The prize
+doesn't move. It's exactly behind the same door as it was when the
+puzzle started.
+So no matter what happens, my chances of winning with the door I first
+chose was and remains one in three.
+And remember that means there is a two in three chance that the prize
+is behind one or other of the doors I didn't choose.
+Which means that before he opens one of the two doors I didn't choose
+it's 50/50 which door has the two in three chance of being correct.
+After Monty opens one of the doors that 50/50 uncertainty disappears.
+Which means the two in three chance of being correct now applies to
+the one remaining closed door I didn't originally choose.
+Since a two in three chance of being right is better than a one in
+three chance of being right, I should change my initial decision.&lt;/p&gt;
+</summary><category term="fun"></category><category term="puzzles"></category></entry><entry><title>Programming is bad for your health</title><link href="https://the-code-robot.github.io/programming-is-bad-for-your-health.html" rel="alternate"></link><updated>2015-06-11T21:13:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-11:programming-is-bad-for-your-health.html</id><summary type="html">&lt;p&gt;I've just been reading this article on &lt;a class="reference external" href="http://health.stackexchange.com/questions/124/why-is-sitting-for-long-periods-unhealthy"&gt;why sitting still is bad for
+you&lt;/a&gt;
+and, if I read it right, standing still is not much better .
+It is hardly news. We were designed to be active. But it is always
+uncomfortable to have the abstract awareness of harm condensed to actual
+damage vectors.
+I've tried for years to get going the Pomodoro principle - but my
+concentration span doesn't seem to like the short 25 minute periodicity.
+Time to make more effort perhaps.&lt;/p&gt;
+</summary><category term="health"></category><category term="wellbeing"></category></entry><entry><title>GitHub Profile</title><link href="https://the-code-robot.github.io/github-profile.html" rel="alternate"></link><updated>2015-06-11T16:36:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-06-11:github-profile.html</id><summary type="html">&lt;p&gt;Because a number of third party services seem to believe that you
+cannot possibly be a serious programmer unless you have an account on
+GitHub, I have had to create one.
+But my shiny new &lt;a class="reference external" href="https://github.com/coderobot-gh"&gt;GitHub profile&lt;/a&gt;
+is only a cypher to direct anyone who passes by to my public
+repositories &lt;a class="reference external" href="https://bitbucket.org/coderobot"&gt;on Bitbucket&lt;/a&gt; .&lt;/p&gt;
+</summary><category term="bitbucket"></category><category term="github"></category><category term="repositories"></category></entry><entry><title>update to make_sslcert.py script</title><link href="https://the-code-robot.github.io/update-to-make_sslcertpy-script.html" rel="alternate"></link><updated>2012-03-09T12:50:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2012-03-09:update-to-make_sslcertpy-script.html</id><summary type="html">&lt;div&gt;&lt;p&gt;{{{&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;A self-signed certificate generator.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl genrsa&amp;quot; generates a private key&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl req&amp;quot; generates a certificate signing request&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl rsa&amp;quot; removes the passphrase&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl x509 -req&amp;quot; creates the certificate from the certificate signing
+request and the private key with the passphrase removed.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;import os&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;_name=&amp;quot;server&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;commands = [&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl genrsa -des3 -out %s.key 1024&amp;quot; % _name,&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl req -new -key %s.key -out %s.csr&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;cp %s.key %s.key.org&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl rsa -in %s.key.org -out %s.key&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl x509 -req -in %s.csr -signkey %s.key -out %s.crt&amp;quot; %
+(_name,_name,_name)&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;]&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;for c in commands:&lt;/p&gt;
+&lt;/div&gt;  &lt;div&gt;
+
+os.system(c)&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#credit to &lt;a class="reference external" href="http://www.akadia.com/services/ssh_test_certificate.html"&gt;http://www.akadia.com/services/ssh_test_certificate.html&lt;/a&gt;
+where the information comes from.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#When you run this code, where it asks for Common Name or YourName,
+enter the name of the host eg - www.example.com or
+mywebserver.sales.example.com .&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#See
+&lt;a class="reference external" href="http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl"&gt;http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl&lt;/a&gt;
+for creating one certificate to protect multiple hosts.&lt;/p&gt;
+&lt;/div&gt;&lt;div
+style="font-family: Georgia, serif; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;"&gt;&lt;p&gt;}}}&lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Qooxdoo generate.py source, source-all</title><link href="https://the-code-robot.github.io/qooxdoo-generatepy-source-source-all.html" rel="alternate"></link><updated>2011-10-21T08:28:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-10-21:qooxdoo-generatepy-source-source-all.html</id><summary type="html">&lt;p&gt;Health warning - this may not be accurate but it reflects my current
+understanding.
+When you write an application in Qooxdoo, your raw code has to be
+referenced into a master javascript file which is loaded by the browser.
+You do this initially by running the generate source command.
+Thereafter, provided you do not refer to any new classes (either ones
+you have written or ones provided by qooxdoo or contributors) you may
+simple edit your code and refresh the browser to see your changes. No
+need to run generate.
+But if you create some new classes in your application, the master
+javascript file does not know about them. Therefore you need to run
+generate source again to update the master.
+Or if you decide to use some additional qooxdoo classes then again the
+master javascript file does not know about this change and you will need
+to run generate source so that it knows to include the additional
+qooxdoo classes.
+Because in writing your qooxdoo application it is much more common for
+you to add references to qooxdoo classes than it is to create additional
+classes of your own, the generate source-all command exists. This causes
+the master javascript file to contain references to all the qooxdoo
+classes whether you are currently using them or not. Thus, provided you
+are not writing any new classes of your own, you can in future skip the
+generate source command entirely. To see the effect of your code changes
+you need only refresh the browser.
+In a nutshell, the difference between source and source-all is that
+using source-all can save you time in development because you only need
+to recompile the master when you add new classes of your own. If you
+were not to use source-all you would need to recompile every time you
+made reference to a new qooxdoo class.
+This thread was the source of this article:
+&lt;a class="reference external" href="http://qooxdoo.678.n2.nabble.com/v0-8-generate-py-source-to-include-even-qx-classes-tp1556404p1556404.html"&gt;http://qooxdoo.678.n2.nabble.com/v0-8-generate-py-source-to-include-even-qx-classes-tp1556404p1556404.html&lt;/a&gt;&lt;/p&gt;
+</summary></entry><entry><title>Generate self-signed SSL cert</title><link href="https://the-code-robot.github.io/generate-self-signed-ssl-cert.html" rel="alternate"></link><updated>2011-06-30T13:10:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-06-30:generate-self-signed-ssl-cert.html</id><summary type="html">&lt;div&gt;&lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;A self-signed certificate generator.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;import os&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;_name=&amp;quot;server&amp;quot;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;commands = [&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl genrsa -des3 -out %s.key 1024&amp;quot; % _name,&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl req -new -key %s.key -out %s.csr&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;cp %s.key %s.key.org&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl rsa -in %s.key.org -out %s.key&amp;quot; % (_name,_name),&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl x509 -req -in %s.csr -signkey %s.key -out %s.crt&amp;quot; %
+(_name,_name,_name)&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;]&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;for c in commands:&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;os.system(c)&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#credit to &lt;a class="reference external" href="http://www.akadia.com/services/ssh_test_certificate.html"&gt;http://www.akadia.com/services/ssh_test_certificate.html&lt;/a&gt;
+where the information comes from.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#When you run this code, where it asks for Common Name or YourName,
+enter the name of the host eg - www.example.com or
+mywebserver.sales.example.com .&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#See
+&lt;a class="reference external" href="http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl"&gt;http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl&lt;/a&gt;
+for creating one certificate to protect multiple hosts.&lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Debian Packaging</title><link href="https://the-code-robot.github.io/debian-packaging.html" rel="alternate"></link><updated>2011-06-27T14:44:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-06-27:debian-packaging.html</id><summary type="html">&lt;p&gt;How I made a .deb file&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Create a directory&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;mkdir foo&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;Descend into it.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;cd foo&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;Create a directory DEBIAN&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;mkdir DEBIAN&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;Descend into it.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;Create a text file called 'control'&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;vim control&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Create key:value pairs as per
+http://www.debian.org/doc/debian-policy/ch-binary.html&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;The postinst and prerm scripts also go in the DEBIAN directory.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;The actual install files go in the foo directory&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo/DEBIAN&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo/DEBIAN/control&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo/DEBIAN/postinst&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo/DEBIAN/prerm&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;./foo/bar.....&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Finally, go to the directory above foo and do:&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;dpkg -b ./foo foo.deb and that is it! done!&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Getting Started with Google Adsense</title><link href="https://the-code-robot.github.io/getting-started-with-google-adsense.html" rel="alternate"></link><updated>2011-03-27T10:52:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-03-27:getting-started-with-google-adsense.html</id><summary type="html"></summary></entry><entry><title>Shindig on Ubuntu</title><link href="https://the-code-robot.github.io/shindig-on-ubuntu.html" rel="alternate"></link><updated>2011-01-15T07:01:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-01-15:shindig-on-ubuntu.html</id><summary type="html">&lt;p&gt;I was busy building a Google Gadget when I ran into a glitch. My
+gadget worked fine in the gagdget container on Google Sites and iGoogle
+but did not work too well on &amp;quot;Gadgets-For-Your-Webpage&amp;quot;. (according to
+Firebug gadgets.io was undefined.)
+In any case, my grand plan to use Google's container for gadgets for
+my own site was clearly not going to fly - it was a poor idea to rely
+too much on a third party service for this type of thing.
+So I decided to install
+&lt;a class="reference external" href="http://shindig.apache.org/index.html"&gt;Shindig&lt;/a&gt;. This would allow my
+gadgets to be re-used all around the web, as long as I can keep the
+shindig service running.&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Shindig gives the choice of a PHP or Java version. I chose PHP.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;My server was Ubuntu 10.04.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;I had Apache already installed.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;First things first - check that PHP exists on my box. That would be a
+no.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;sudo aptitude install php5&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Then check that it runs with the classic phpinfo(); script of your
+choice.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;testphp.php&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;lt;?php&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;echo phpinfo();&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;?&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Yes, PHP's up and running&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Shindig has PHP dependencies - mcrypt, curl, simplexml and json.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;But grepping through the output of phpinfo() there is no curl and mcrypt
+module.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Let's fix that.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;sudo aptitidue install php5-mcrypt php5-curl&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Now we have a working PHP environment.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Next up, configure Apache for Shindig.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Shindig requires that it's .htaccess file be honoured and also that
+mod_rewrite be enabled.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;First, mod_rewrite. In my Apache out-of-the-box setup mod_rewrite was
+not enabled. That was an easy fix:&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;cd /etc/apache2/mods-enabled&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;ls -s ../rewrite.load&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;I'm not a big .htaccess fan. Which means I want to configure Apache to
+honour .htaccess in the Shindig installation directory. And to do that,
+I need to install Shindig.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;So, get the Shindig application from here:
+&lt;a class="reference external" href="http://www.apache.org/dist/shindig/2.0.0/shindig-2.0.0-php.tar.gz"&gt;http://www.apache.org/dist/shindig/2.0.0/shindig-2.0.0-php.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;I unpacked it to /var/www and then I renamed it form shindig-2.0.0 to
+just plain old shindig.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;cd ~&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;wget &lt;a class="reference external" href="http://www.apache.org/dist/shindig/2.0.0/shindig-2.0.0-php.tar.gz"&gt;http://www.apache.org/dist/shindig/2.0.0/shindig-2.0.0-php.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;cd /var/www&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;tar xfzv ~/shindig-2.0.0-php.tar.gz&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;mv shindig-2.0.0 shindig&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;So, in the appropriate part of my Apache config, in my case
+/etc/apache2/sites-available/default enabled the .htaccess file thus:&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;lt;Directory&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;AllowOverride All&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;lt;/Directory&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Next up is the configuration of the Shindig application itself.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;In version 2.0.0 there is a README file at the top level of the unpacked
+distribution. It describes two options for installing Shindig. Option A,
+is to create a new virtual host container in Apache, Option B is to use
+an existing configuration. For me, option B was the more practical.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;The instructions contained in the
+&lt;a class="reference external" href="http://svn.apache.org/repos/asf/shindig/tags/shindig-project-2.0.0/php/README"&gt;README&lt;/a&gt;
+have are two small errors in the B instructions:&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;ol class="arabic simple"&gt;
+&lt;li&gt;paths beginning php/ are incorrect.&lt;/li&gt;
+&lt;li&gt;no reference is made to the need to edit the .htaccess file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;&lt;div&gt;&lt;p&gt;To correct error 1 above, just ignore the php part of the path because
+there is no php directory in the PHP Shindig distribution. [ It looks
+like what has happened is that the instructions where written for use
+from the Subversion source tree, where the PHP and JAVA versions live
+side by side in /php/ and /java/ directories respectively] I installed
+Shindig to /var/www/shindig and the correct path for web_prefix was
+/shindig .&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;To correct error 2, just know that you need to edit the .htaccess file.
+Once you know this, you will find the instructions in the file itself.
+But if you didn't already know that, you would be a bit stuck.&lt;/p&gt;
+&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;That's it. Enjoy using Shindig.&lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>CouchDB</title><link href="https://the-code-robot.github.io/couchdb.html" rel="alternate"></link><updated>2009-05-04T15:18:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2009-05-04:couchdb.html</id><summary type="html">&lt;p&gt;&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;To run a view&lt;/div&gt;
+&lt;/div&gt;
+&lt;pre class="literal-block"&gt;
+http://&amp;lt;server&amp;gt;/&amp;lt;database&amp;gt;/_design/&amp;lt;design-doc-name&amp;gt;/_view/&amp;lt;view_name&amp;gt;
+&lt;/pre&gt;
+&lt;/p&gt;</summary><category term="couchdb"></category></entry><entry><title>Great XLink Primer</title><link href="https://the-code-robot.github.io/great-xlink-primer.html" rel="alternate"></link><updated>2008-06-01T10:38:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2008-06-01:great-xlink-primer.html</id><summary type="html">&lt;p&gt;Melonfire have a great &lt;a class="reference external" href="http://www.melonfire.com/community/columns/trog/print.php?id=90"&gt;xlink
+primer&lt;/a&gt;.&lt;/p&gt;
+</summary></entry><entry><title>Plone and Subversion</title><link href="https://the-code-robot.github.io/plone-and-subversion.html" rel="alternate"></link><updated>2008-05-16T16:01:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2008-05-16:plone-and-subversion.html</id><summary type="html">&lt;p&gt;&lt;p&gt;When making a plone product in subversion, setup the repository thus:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+package.module/trunk/package.module/package/module
+&lt;/pre&gt;
+&lt;p&gt;This will allow you to checkout your product into the src directory:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+http://svn.example.com/svn/package.module/trunk/package.module
+&lt;/pre&gt;
+&lt;p&gt;Don't forget to do this after running bootstrap.py but before running
+the buildout.&lt;/p&gt;
+&lt;/p&gt;</summary></entry><entry><title>Create a custom content type in Plone3</title><link href="https://the-code-robot.github.io/create-a-custom-content-type-in-plone3.html" rel="alternate"></link><updated>2008-04-27T16:27:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2008-04-27:create-a-custom-content-type-in-plone3.html</id><summary type="html">&lt;p&gt;&lt;pre class="literal-block"&gt;
+paster create -t plone &amp;lt;somepackage.somemodule&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Then edit the buildout.cfg to record the egg in the:
+eggs section,(somepackage.somemodule)
+develop eggs section (src/somepackage.somemodule)
+and the instance zcml section (to put the zcml slug in)
+then:-&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+./bin/buildout -o
+&lt;/pre&gt;
+&lt;p&gt;Create the initiailize function in the
+somepackage.somemodule.__init__.py file. Other examples say this is
+also the place where you can create a MessageFactory object.
+The initialize function makes reference to the content object being
+created so you need to have that created.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$&amp;gt; mkdir content$&amp;gt; cd content$&amp;gt; touch contentthing.py
+&lt;/pre&gt;
+&lt;p&gt;Also, it is suggested in the Optilude book that you create a config.py
+file to contain various constants to enable easier future reference.
+The body of the contentthing.py breaks down into a few sections.
+Firstly you define a schema for the content type. The schema defines
+the what parts the content type has, and what type of thing those parts
+are. The schema begins by copying the already existing general purpose
+schema using &lt;em&gt;atapi.ATContentTypeSchema.copy()&lt;/em&gt; and to this you then add
+your own, using &lt;em&gt;atapi.Schema()&lt;/em&gt;.
+Once the schema has been defined it has to be finalized. This requires
+hints as to whether or not the schema is folder-like, and whether or not
+conversations can be moved (don't understand this part).
+After the schema is in place one may then move on to define the
+content type class proper.
+The class inherits from &lt;em&gt;base.ATCTContent&lt;/em&gt;.
+The class has a &lt;em&gt;schema&lt;/em&gt; attribute. It should be no surprise that the
+schema is set to the one just created. The class is also given a
+&lt;em&gt;portal_type&lt;/em&gt; attribute. This value is a string value, presumably used
+for UI purposes. The class also calls the &lt;em&gt;zope.interface.implements()&lt;/em&gt;
+method. Previously you will have defined a zope style interface for the
+product. I did this, although I set the interface to &lt;em&gt;pass&lt;/em&gt;. I'm not
+sure why the zope interface is required when there is already an
+Archetypes schema. Perhaps they are just preparing for the future?
+The class is next given a series of attributes. These attributes are
+made to have the same names as those created in the schema, but are all
+initialized using methods such as &lt;em&gt;atapi.ATFieldProperty()&lt;/em&gt;.
+Finally, after trhe class has been defined, the module registers the
+class thus:
+&lt;em&gt;atapi.registerType(&amp;lt;classname&amp;gt;, PROJECTNAME)&lt;/em&gt;
+At this stage, if you try to install the content type to plone, you
+should find that the restart succeeds, and that the product appears in
+the product section of the ZMI. However, the product will be invisible
+to Plone.
+We make the product visible to plone by going the the package's
+&lt;em&gt;configure.zcml&lt;/em&gt; file and using the generic setup extension profile
+mechanism. A good example of this is on page 71 of the Professional
+Plone Development book.
+Restarting zope at this point will allow the product to appear in the
+&amp;quot;Add New Products&amp;quot; section of the &amp;quot;Site Setup&amp;quot; page in the Plone
+interface.
+Installing the product should proceed without error. The next hurdle
+will be that the product is not present in the &amp;quot;Add new ...&amp;quot; drop down
+menu in the Plone user interface.
+We make the product appear as addable in the UI by the simple
+expedient of going to the &lt;em&gt;profile/defaults/types/&amp;lt;sometype&amp;gt;.xml&lt;/em&gt; and
+ensure that &lt;em&gt;global_allow&lt;/em&gt; property is set to true.&lt;/p&gt;
+&lt;/p&gt;</summary><category term="plone"></category></entry></feed>
