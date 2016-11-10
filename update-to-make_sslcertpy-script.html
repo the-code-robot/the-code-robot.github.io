@@ -15,6 +15,7 @@
         <header id="banner" class="body">
                 <h1><a href="https://the-code-robot.github.io/">CodeRobot </a></h1>
                 <nav><ul>
+                    <li><a href="https://the-code-robot.github.io/pages/about.html">About</a></li>
                     <li class="active"><a href="https://the-code-robot.github.io/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -37,40 +38,41 @@
         </address>
 <p>In <a href="https://the-code-robot.github.io/category/misc.html">misc</a>. </p>
 
-</footer><!-- /.post-info -->      <div><p>{{{</p>
-</div><div><p>#!/usr/bin/env python</p>
-</div><div><p>&quot;&quot;&quot;</p>
-</div><div><p>A self-signed certificate generator.</p>
-</div><div></div><div><p>&quot;openssl genrsa&quot; generates a private key</p>
-</div><div><p>&quot;openssl req&quot; generates a certificate signing request</p>
-</div><div><p>&quot;openssl rsa&quot; removes the passphrase</p>
-</div><div><p>&quot;openssl x509 -req&quot; creates the certificate from the certificate signing
-request and the private key with the passphrase removed.</p>
-</div><div><p>&quot;&quot;&quot;</p>
-</div><div><p>import os</p>
-</div><div></div><div><p>_name=&quot;server&quot;</p>
-</div><div></div><div><p>commands = [</p>
-</div><div><p>&quot;openssl genrsa -des3 -out %s.key 1024&quot; % _name,</p>
-</div><div><p>&quot;openssl req -new -key %s.key -out %s.csr&quot; % (_name,_name),</p>
-</div><div><p>&quot;cp %s.key %s.key.org&quot; % (_name,_name),</p>
-</div><div><p>&quot;openssl rsa -in %s.key.org -out %s.key&quot; % (_name,_name),</p>
-</div><div><p>&quot;openssl x509 -req -in %s.csr -signkey %s.key -out %s.crt&quot; %
-(_name,_name,_name)</p>
-</div><div><p>]</p>
-</div><div></div><div><p>for c in commands:</p>
-</div>  <div>
+</footer><!-- /.post-info -->      <pre class="code python literal-block">
+<span class="c">#!/usr/bin/env python</span>
 
-os.system(c)</div><div></div><div><p>#credit to <a class="reference external" href="http://www.akadia.com/services/ssh_test_certificate.html">http://www.akadia.com/services/ssh_test_certificate.html</a>
-where the information comes from.</p>
-</div><div></div><div><p>#When you run this code, where it asks for Common Name or YourName,
-enter the name of the host eg - www.example.com or
-mywebserver.sales.example.com .</p>
-</div><div></div><div><p>#See
-<a class="reference external" href="http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl">http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl</a>
-for creating one certificate to protect multiple hosts.</p>
-</div><div
-style="font-family: Georgia, serif; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;"><p>}}}</p>
-</div></p>
+<span class="sd">&quot;&quot;&quot;
+A self-signed certificate generator.
+&quot;openssl genrsa&quot; generates a private key
+&quot;openssl req&quot; generates a certificate signing request
+&quot;openssl rsa&quot; removes the passphrase
+&quot;openssl x509 -req&quot; creates the certificate from the certificate signing
+request and the private key with the passphrase removed.
+&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_name</span><span class="o">=</span><span class="s">&quot;server&quot;</span>
+
+
+<span class="n">commands</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;openssl genrsa -des3 -out </span><span class="si">%s</span><span class="s">.key 1024&quot;</span> <span class="o">%</span> <span class="n">_name</span><span class="p">,</span>
+    <span class="s">&quot;openssl req -new -key </span><span class="si">%s</span><span class="s">.key -out </span><span class="si">%s</span><span class="s">.csr&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s">&quot;cp </span><span class="si">%s</span><span class="s">.key </span><span class="si">%s</span><span class="s">.key.org&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s">&quot;openssl rsa -in </span><span class="si">%s</span><span class="s">.key.org -out </span><span class="si">%s</span><span class="s">.key&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s">&quot;openssl x509 -req -in </span><span class="si">%s</span><span class="s">.csr -signkey </span><span class="si">%s</span><span class="s">.key -out </span><span class="si">%s</span><span class="s">.crt&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c">#credit to http://www.akadia.com/services/ssh_test_certificate.html where the information comes from.</span>
+
+<span class="c">#When you run this code, where it asks for Common Name or YourName, enter the name of the host eg - www.example.com or mywebserver.sales.example.com .</span>
+
+
+<span class="c">#See http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl for creating one certificate to protect multiple hosts.</span>
+</pre>
+
     </div><!-- /.entry-content -->
 
   </article>

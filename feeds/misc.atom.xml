@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeRobot</title><link href="https://the-code-robot.github.io/" rel="alternate"></link><link href="https://the-code-robot.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://the-code-robot.github.io/</id><updated>2016-01-06T23:49:00+00:00</updated><entry><title>Vim security</title><link href="https://the-code-robot.github.io/vim-security.html" rel="alternate"></link><updated>2016-01-06T23:49:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2016-01-06:vim-security.html</id><summary type="html">&lt;div class="line-block"&gt;
-&lt;div class="line"&gt;MARVELLOUS: Just read &lt;a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html"&gt;https://glyph.twistedmatrix.com/2015/11/editor-malware.html&lt;/a&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;and &lt;a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/"&gt;https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/&lt;/a&gt;
-which both discuss some issues about text editor security.
-| TL,DR:&lt;/p&gt;
-&lt;div class="line-block"&gt;
-&lt;div class="line"&gt;1. vim-plug is preferred to vundle&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="line-block"&gt;
-&lt;div class="line"&gt;2. developers may be seen as high value targets for system compromise.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="line-block"&gt;
-&lt;div class="line"&gt;3. beware git:// protocol&lt;/div&gt;
-&lt;/div&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeRobot</title><link href="https://the-code-robot.github.io/" rel="alternate"></link><link href="https://the-code-robot.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://the-code-robot.github.io/</id><updated>2016-01-06T23:49:00+00:00</updated><entry><title>Vim security</title><link href="https://the-code-robot.github.io/vim-security.html" rel="alternate"></link><updated>2016-01-06T23:49:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2016-01-06:vim-security.html</id><summary type="html">&lt;p&gt;I've just read &lt;a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html"&gt;https://glyph.twistedmatrix.com/2015/11/editor-malware.html&lt;/a&gt; and &lt;a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/"&gt;https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/&lt;/a&gt; which both discuss some issues about text editor security.&lt;/p&gt;
+&lt;p&gt;TL,DR:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;vim-plug is preferred to vundle&lt;/li&gt;
+&lt;li&gt;developers may be seen as high value targets for system compromise.&lt;/li&gt;
+&lt;li&gt;beware git:// protocol&lt;/li&gt;
+&lt;/ol&gt;
 </summary><category term="security"></category><category term="vim"></category><category term="vim-plug"></category><category term="vundle"></category></entry><entry><title>A Python Christmas present</title><link href="https://the-code-robot.github.io/a-python-christmas-present.html" rel="alternate"></link><updated>2015-12-22T00:33:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2015-12-22:a-python-christmas-present.html</id><summary type="html">&lt;div class="line-block"&gt;
 &lt;div class="line"&gt;Nose is my current Python testing framework of choice.&lt;/div&gt;
 &lt;/div&gt;
@@ -419,40 +411,41 @@ GitHub, I have had to create one.
 But my shiny new &lt;a class="reference external" href="https://github.com/coderobot-gh"&gt;GitHub profile&lt;/a&gt;
 is only a cypher to direct anyone who passes by to my public
 repositories &lt;a class="reference external" href="https://bitbucket.org/coderobot"&gt;on Bitbucket&lt;/a&gt; .&lt;/p&gt;
-</summary><category term="bitbucket"></category><category term="github"></category><category term="repositories"></category></entry><entry><title>update to make_sslcert.py script</title><link href="https://the-code-robot.github.io/update-to-make_sslcertpy-script.html" rel="alternate"></link><updated>2012-03-09T12:50:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2012-03-09:update-to-make_sslcertpy-script.html</id><summary type="html">&lt;div&gt;&lt;p&gt;{{{&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;A self-signed certificate generator.&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl genrsa&amp;quot; generates a private key&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl req&amp;quot; generates a certificate signing request&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl rsa&amp;quot; removes the passphrase&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl x509 -req&amp;quot; creates the certificate from the certificate signing
-request and the private key with the passphrase removed.&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;import os&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;_name=&amp;quot;server&amp;quot;&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;commands = [&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl genrsa -des3 -out %s.key 1024&amp;quot; % _name,&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl req -new -key %s.key -out %s.csr&amp;quot; % (_name,_name),&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;cp %s.key %s.key.org&amp;quot; % (_name,_name),&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl rsa -in %s.key.org -out %s.key&amp;quot; % (_name,_name),&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;&amp;quot;openssl x509 -req -in %s.csr -signkey %s.key -out %s.crt&amp;quot; %
-(_name,_name,_name)&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;p&gt;]&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;for c in commands:&lt;/p&gt;
-&lt;/div&gt;  &lt;div&gt;
+</summary><category term="bitbucket"></category><category term="github"></category><category term="repositories"></category></entry><entry><title>update to make_sslcert.py script</title><link href="https://the-code-robot.github.io/update-to-make_sslcertpy-script.html" rel="alternate"></link><updated>2012-03-09T12:50:00+00:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2012-03-09:update-to-make_sslcertpy-script.html</id><summary type="html">&lt;pre class="code python literal-block"&gt;
+&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
 
-os.system(c)&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#credit to &lt;a class="reference external" href="http://www.akadia.com/services/ssh_test_certificate.html"&gt;http://www.akadia.com/services/ssh_test_certificate.html&lt;/a&gt;
-where the information comes from.&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#When you run this code, where it asks for Common Name or YourName,
-enter the name of the host eg - www.example.com or
-mywebserver.sales.example.com .&lt;/p&gt;
-&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;#See
-&lt;a class="reference external" href="http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl"&gt;http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl&lt;/a&gt;
-for creating one certificate to protect multiple hosts.&lt;/p&gt;
-&lt;/div&gt;&lt;div
-style="font-family: Georgia, serif; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;"&gt;&lt;p&gt;}}}&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Qooxdoo generate.py source, source-all</title><link href="https://the-code-robot.github.io/qooxdoo-generatepy-source-source-all.html" rel="alternate"></link><updated>2011-10-21T08:28:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-10-21:qooxdoo-generatepy-source-source-all.html</id><summary type="html">&lt;p&gt;Health warning - this may not be accurate but it reflects my current
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;
+A self-signed certificate generator.
+&amp;quot;openssl genrsa&amp;quot; generates a private key
+&amp;quot;openssl req&amp;quot; generates a certificate signing request
+&amp;quot;openssl rsa&amp;quot; removes the passphrase
+&amp;quot;openssl x509 -req&amp;quot; creates the certificate from the certificate signing
+request and the private key with the passphrase removed.
+&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;server&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="n"&gt;commands&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;openssl genrsa -des3 -out &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key 1024&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;openssl req -new -key &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key -out &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.csr&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;cp &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key.org&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;openssl rsa -in &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key.org -out &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;openssl x509 -req -in &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.csr -signkey &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.key -out &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.crt&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;#credit to http://www.akadia.com/services/ssh_test_certificate.html where the information comes from.&lt;/span&gt;
+
+&lt;span class="c"&gt;#When you run this code, where it asks for Common Name or YourName, enter the name of the host eg - www.example.com or mywebserver.sales.example.com .&lt;/span&gt;
+
+
+&lt;span class="c"&gt;#See http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl for creating one certificate to protect multiple hosts.&lt;/span&gt;
+&lt;/pre&gt;
+</summary></entry><entry><title>Qooxdoo generate.py source, source-all</title><link href="https://the-code-robot.github.io/qooxdoo-generatepy-source-source-all.html" rel="alternate"></link><updated>2011-10-21T08:28:00+01:00</updated><author><name>Robin Abbi (noreply@blogger.com)</name></author><id>tag:https://the-code-robot.github.io,2011-10-21:qooxdoo-generatepy-source-source-all.html</id><summary type="html">&lt;p&gt;Health warning - this may not be accurate but it reflects my current
 understanding.
 When you write an application in Qooxdoo, your raw code has to be
 referenced into a master javascript file which is loaded by the browser.

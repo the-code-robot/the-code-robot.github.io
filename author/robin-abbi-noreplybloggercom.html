@@ -15,6 +15,7 @@
         <header id="banner" class="body">
                 <h1><a href="https://the-code-robot.github.io/">CodeRobot </a></h1>
                 <nav><ul>
+                    <li><a href="https://the-code-robot.github.io/pages/about.html">About</a></li>
                     <li><a href="https://the-code-robot.github.io/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -32,21 +33,13 @@
         </address>
 <p>In <a href="https://the-code-robot.github.io/category/misc.html">misc</a>. </p>
 <p>tags: <a href="https://the-code-robot.github.io/tag/security.html">security</a><a href="https://the-code-robot.github.io/tag/vim.html">vim</a><a href="https://the-code-robot.github.io/tag/vim-plug.html">vim-plug</a><a href="https://the-code-robot.github.io/tag/vundle.html">vundle</a></p>
-</footer><!-- /.post-info --><div class="line-block">
-<div class="line">MARVELLOUS: Just read <a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html">https://glyph.twistedmatrix.com/2015/11/editor-malware.html</a></div>
-</div>
-<p>and <a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/">https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/</a>
-which both discuss some issues about text editor security.
-| TL,DR:</p>
-<div class="line-block">
-<div class="line">1. vim-plug is preferred to vundle</div>
-</div>
-<div class="line-block">
-<div class="line">2. developers may be seen as high value targets for system compromise.</div>
-</div>
-<div class="line-block">
-<div class="line">3. beware git:// protocol</div>
-</div>
+</footer><!-- /.post-info --><p>I've just read <a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html">https://glyph.twistedmatrix.com/2015/11/editor-malware.html</a> and <a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/">https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/</a> which both discuss some issues about text editor security.</p>
+<p>TL,DR:</p>
+<ol class="arabic simple">
+<li>vim-plug is preferred to vundle</li>
+<li>developers may be seen as high value targets for system compromise.</li>
+<li>beware git:// protocol</li>
+</ol>
                 </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -475,19 +468,23 @@ is only a cypher to direct anyone who passes by to my public ...</p>
         </address>
 <p>In <a href="https://the-code-robot.github.io/category/misc.html">misc</a>. </p>
 
-</footer><!-- /.post-info -->                <div><p>{{{</p>
-</div><div><p>#!/usr/bin/env python</p>
-</div><div><p>&quot;&quot;&quot;</p>
-</div><div><p>A self-signed certificate generator.</p>
-</div><div></div><div><p>&quot;openssl genrsa&quot; generates a private key</p>
-</div><div><p>&quot;openssl req&quot; generates a certificate signing request</p>
-</div><div><p>&quot;openssl rsa&quot; removes the passphrase</p>
-</div><div><p>&quot;openssl x509 -req&quot; creates the certificate from the certificate signing
-request and the private key with the passphrase removed.</p>
-</div><div><p>&quot;&quot;&quot;</p>
-</div><div><p>import os</p>
-</div><div></div><div><p>_name=&quot;server&quot;</p>
-</div><div></div><div><p>commands ...</p></div>
+</footer><!-- /.post-info -->                <pre class="code python literal-block">
+<span class="c">#!/usr/bin/env python</span>
+
+<span class="sd">&quot;&quot;&quot;
+A self-signed certificate generator.
+&quot;openssl genrsa&quot; generates a private key
+&quot;openssl req&quot; generates a certificate signing request
+&quot;openssl rsa&quot; removes the passphrase
+&quot;openssl x509 -req&quot; creates the certificate from the certificate signing
+request and the private key with the passphrase removed.
+&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_name</span><span class="o">=</span><span class="s">&quot;server&quot;</span>
+
+
+<span class="n">commands ...</span></pre>
                 <a class="readmore" href="https://the-code-robot.github.io/update-to-make_sslcertpy-script.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
