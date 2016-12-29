@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 </head>
 
@@ -15,7 +15,6 @@
                 <h1><a href="/">CodeRobot </a></h1>
                 <nav><ul>
                     <li><a href="/pages/about.html">About</a></li>
-                    <li><a href="/pages/contact.html">Contact</a></li>
                     <li class="active"><a href="/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -29,17 +28,17 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2012-03-09T12:50:00">
-                Fri 09 March 2012
+        <abbr class="published" title="2012-03-09T12:50:00+00:00">
+                Published: Fri 09 March 2012
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
+                By                         <a class="url fn" href="/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
         </address>
-<p>In <a href="/category/misc.html">misc</a>. </p>
+<p>In <a href="/category/misc.html">misc</a>.</p>
 
 </footer><!-- /.post-info -->      <pre class="code python literal-block">
-<span class="c">#!/usr/bin/env python</span>
+<span class="ch">#!/usr/bin/env python</span>
 
 <span class="sd">&quot;&quot;&quot;
 A self-signed certificate generator.
@@ -51,26 +50,26 @@ request and the private key with the passphrase removed.
 &quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">_name</span><span class="o">=</span><span class="s">&quot;server&quot;</span>
+<span class="n">_name</span><span class="o">=</span><span class="s2">&quot;server&quot;</span>
 
 
 <span class="n">commands</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&quot;openssl genrsa -des3 -out </span><span class="si">%s</span><span class="s">.key 1024&quot;</span> <span class="o">%</span> <span class="n">_name</span><span class="p">,</span>
-    <span class="s">&quot;openssl req -new -key </span><span class="si">%s</span><span class="s">.key -out </span><span class="si">%s</span><span class="s">.csr&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
-    <span class="s">&quot;cp </span><span class="si">%s</span><span class="s">.key </span><span class="si">%s</span><span class="s">.key.org&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
-    <span class="s">&quot;openssl rsa -in </span><span class="si">%s</span><span class="s">.key.org -out </span><span class="si">%s</span><span class="s">.key&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
-    <span class="s">&quot;openssl x509 -req -in </span><span class="si">%s</span><span class="s">.csr -signkey </span><span class="si">%s</span><span class="s">.key -out </span><span class="si">%s</span><span class="s">.crt&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">)</span>
+    <span class="s2">&quot;openssl genrsa -des3 -out </span><span class="si">%s</span><span class="s2">.key 1024&quot;</span> <span class="o">%</span> <span class="n">_name</span><span class="p">,</span>
+    <span class="s2">&quot;openssl req -new -key </span><span class="si">%s</span><span class="s2">.key -out </span><span class="si">%s</span><span class="s2">.csr&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s2">&quot;cp </span><span class="si">%s</span><span class="s2">.key </span><span class="si">%s</span><span class="s2">.key.org&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s2">&quot;openssl rsa -in </span><span class="si">%s</span><span class="s2">.key.org -out </span><span class="si">%s</span><span class="s2">.key&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">),</span>
+    <span class="s2">&quot;openssl x509 -req -in </span><span class="si">%s</span><span class="s2">.csr -signkey </span><span class="si">%s</span><span class="s2">.key -out </span><span class="si">%s</span><span class="s2">.crt&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">,</span><span class="n">_name</span><span class="p">)</span>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
-<span class="c">#credit to http://www.akadia.com/services/ssh_test_certificate.html where the information comes from.</span>
+<span class="c1">#credit to http://www.akadia.com/services/ssh_test_certificate.html where the information comes from.</span>
 
-<span class="c">#When you run this code, where it asks for Common Name or YourName, enter the name of the host eg - www.example.com or mywebserver.sales.example.com .</span>
+<span class="c1">#When you run this code, where it asks for Common Name or YourName, enter the name of the host eg - www.example.com or mywebserver.sales.example.com .</span>
 
 
-<span class="c">#See http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl for creating one certificate to protect multiple hosts.</span>
+<span class="c1">#See http://artins.org/ben/how-to-create-a-multihomed-certificate-with-openssl for creating one certificate to protect multiple hosts.</span>
 </pre>
 
     </div><!-- /.entry-content -->
