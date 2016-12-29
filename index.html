@@ -21,7 +21,35 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/vim-security.html">Vim security</a></h1>
+                    <h1 class="entry-title"><a href="/docker-image-names-registries-and-repositories.html">Docker image names, registries and repositories</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-12-29T23:37:00+00:00">
+                Published: Thu 29 December 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/robin-abbi-robinabbidownleynet.html">Robin Abbi (robin.abbi@downley.net)</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info --><p>A docker push or pull command requires an image name whose structure is:</p>
+<p>[&lt;registry&gt;/]&lt;repository&gt;[:&lt;tag&gt;]</p>
+<p>The registry part is optional and if not detected will default to docker.io</p>
+<p>I presume that when you run docker push for example, that the previous login primes docker to expect that a subsequent push might have a registry hostname at the front.</p>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/vim-security.html" rel="bookmark"
+                           title="Permalink to Vim security">Vim security</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-01-06T23:49:00+00:00">
                 Published: Wed 06 January 2016
@@ -32,19 +60,17 @@
         </address>
 <p>In <a href="/category/misc.html">misc</a>.</p>
 <p>tags: <a href="/tag/security.html">security</a> <a href="/tag/vim.html">vim</a> <a href="/tag/vim-plug.html">vim-plug</a> <a href="/tag/vundle.html">vundle</a> </p>
-</footer><!-- /.post-info --><p>I've just read <a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html">https://glyph.twistedmatrix.com/2015/11/editor-malware.html</a> and <a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/">https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/</a> which both discuss some issues about text editor security.</p>
+</footer><!-- /.post-info -->                <p>I've just read <a class="reference external" href="https://glyph.twistedmatrix.com/2015/11/editor-malware.html">https://glyph.twistedmatrix.com/2015/11/editor-malware.html</a> and <a class="reference external" href="https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/">https://jordaneldredge.com/blog/why-i-switched-from-vundle-to-plug/</a> which both discuss some issues about text editor security.</p>
 <p>TL,DR:</p>
 <ol class="arabic simple">
 <li>vim-plug is preferred to vundle</li>
 <li>developers may be seen as high value targets for system compromise.</li>
 <li>beware git:// protocol</li>
 </ol>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+
+                <a class="readmore" href="/vim-security.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

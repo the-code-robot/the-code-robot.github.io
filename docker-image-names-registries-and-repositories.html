@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>CodeRobot - Authors</title>
+        <title>Docker image names, registries and repositories</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -15,18 +15,37 @@
                 <h1><a href="/">CodeRobot </a></h1>
                 <nav><ul>
                     <li><a href="/pages/about.html">About</a></li>
-                    <li><a href="/category/misc.html">misc</a></li>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-
 <section id="content" class="body">
-    <h1>Authors on CodeRobot</h1>
-    <ul>
-        <li><a href="/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a> (25)</li>
-        <li><a href="/author/robin-abbi-robinabbidownleynet.html">Robin Abbi (robin.abbi@downley.net)</a> (1)</li>
-    </ul>
-</section>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/docker-image-names-registries-and-repositories.html" rel="bookmark"
+           title="Permalink to Docker image names, registries and repositories">Docker image names, registries and repositories</a></h1>
+    </header>
 
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-12-29T23:37:00+00:00">
+                Published: Thu 29 December 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/robin-abbi-robinabbidownleynet.html">Robin Abbi (robin.abbi@downley.net)</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p>A docker push or pull command requires an image name whose structure is:</p>
+<p>[&lt;registry&gt;/]&lt;repository&gt;[:&lt;tag&gt;]</p>
+<p>The registry part is optional and if not detected will default to docker.io</p>
+<p>I presume that when you run docker push for example, that the previous login primes docker to expect that a subsequent push might have a registry hostname at the front.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
