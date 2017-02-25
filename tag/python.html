@@ -38,6 +38,8 @@
     <div id="navMenu" class="nav-right nav-menu">
           <a class="nav-item is-tab "
              href="http://coderobot.downley.net/category/misc.html">misc</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/microservices.html">microservices</a>
     </div>
   </div>
 </nav>
@@ -48,55 +50,29 @@
       <aside id="featured" class="body">
         <article>
           <h1 class="title">
-            <a href="http://coderobot.downley.net/using-python-unittest-outside-a-testing-environment.html">Using Python unittest outside a testing environment</a>
+            <a href="http://coderobot.downley.net/swagger-testing-in-python.html">Swagger testing in Python</a>
           </h1>
 <footer class="post-info">
-  <abbr class="published" title="2015-12-21T22:28:00+00:00">
-    Published <span class="is-info">Mon 21 December 2015</span>
-    in <a href="http://coderobot.downley.net/category/misc.html">misc</a>
+  <abbr class="published" title="2017-02-24T22:55:00+00:00">
+    Published <span class="is-info">Fri 24 February 2017</span>
+    in <a href="http://coderobot.downley.net/category/microservices.html">microservices</a>
   </abbr>
 
     <p class="author">
-      <em>by           <a class="url fn" href="http://coderobot.downley.net/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
+      <em>by           <a class="url fn" href="http://coderobot.downley.net/author/robin-abbi-robinabbidownleynet.html">Robin Abbi (robin.abbi@downley.net)</a>
 </em>
-      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/outside-the-box.html">outside the box</a></span>
-      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/python.html">python</a></span>
       <span class="tag is-small"><a href="http://coderobot.downley.net/tag/testing.html">testing</a></span>
-      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/unittest.html">unittest</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/swagger.html">swagger</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/openapi.html">openapi</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/python.html">python</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/microservices.html">microservices</a></span>
     </p>
   
 </footer>          <div class="section">
-            <p>Test frameworks are not just for testing code during development and
-deployment.
-Test frameworks may also be put to good use within your application.
-By way of example, consider the possibility of running diagnostics on
-a live application. Another possibility is checking the validity of an
-on-the-fly configuration change.
-The Python unittest library, part of the standard distribution can
-easily be incorporated into your live code.
-The code example below presents a toy example of a test case, which is
-then exercised by your application process. The outcome is a test result
-object which you can query and report on.</p>
-<pre class="code python literal-block">
-<span class="kn">import</span> <span class="nn">unittest</span>
-<span class="k">class</span> <span class="nc">TestMe</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">test_this</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">test_that</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span><span class="n">loader</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestLoader</span><span class="p">()</span>
-
-<span class="n">suite</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromTestCase</span><span class="p">(</span><span class="n">TestMe</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestResult</span><span class="p">()</span>
-<span class="n">suite</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># run actually returns result as well as populating it</span>
-<span class="k">print</span> <span class="n">result</span>
-</pre>
-<pre class="code python literal-block">
-<span class="o">&lt;</span><span class="n">unittest</span> <span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">testresult</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">failures</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">run</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;</span>
-</pre>
-<p>The variable 'result' is an instance of unittest.TestResult() and has a rich set of attributes and methods as <a class="reference external" href="https://docs.python.org/2/library/unittest.html#unittest.TestResult">documented
-here</a>.</p>
+            <div class="section" id="there-will-be-something-here">
+<h2>There will be something here</h2>
+<p>When working on a project it seems wrong to spend more time on the plumbing around the project than on the project application code. My definition of plumbing includes anything written in &lt;insert name of preferred shell&gt;.</p>
+</div>
 
           </div>
         </article>
@@ -117,6 +93,17 @@ here</a>.</p>
   </ul>
 </nav>
 <br>    <div class="columns is-multiline">
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/using-python-unittest-outside-a-testing-environment.html">
+                <h3 class="title is-5">Using Python unittest outside a testing environment</h3>
+                <div class="heading subtitle">Mon 21 December 2015</div>
+                <div><p>Test frameworks are not just for testing code during development and deployment. Test frameworks may also be...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
         <div class="column is-half-tablet is-one-third-desktop">
           <div class="card is-fullwidth is-fullheight">
             <div class="card-content">
