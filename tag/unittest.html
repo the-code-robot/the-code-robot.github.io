@@ -83,35 +83,22 @@ easily be incorporated into your live code.
 The code example below presents a toy example of a test case, which is
 then exercised by your application process. The outcome is a test result
 object which you can query and report on.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="pgcsskn">import</span> <span class="pgcssnn">unittest</span>
-<span class="pgcssk">class</span> <span class="pgcssnc">TestMe</span><span class="pgcssp">(</span><span class="pgcssn">unittest</span><span class="pgcsso">.</span><span class="pgcssn">TestCase</span><span class="pgcssp">):</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="k">class</span> <span class="nc">TestMe</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span class="pgcssk">def</span> <span class="pgcssnf">test_this</span><span class="pgcssp">(</span><span class="pgcssbp">self</span><span class="pgcssp">):</span>
-        <span class="pgcssbp">self</span><span class="pgcsso">.</span><span class="pgcssn">assertTrue</span><span class="pgcssp">(</span><span class="pgcssbp">False</span><span class="pgcssp">)</span>
+    <span class="k">def</span> <span class="nf">test_this</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-    <span class="pgcssk">def</span> <span class="pgcssnf">test_that</span><span class="pgcssp">(</span><span class="pgcssbp">self</span><span class="pgcssp">):</span>
-        <span class="pgcssbp">self</span><span class="pgcsso">.</span><span class="pgcssn">assertTrue</span><span class="pgcssp">(</span><span class="pgcssbp">True</span><span class="pgcssp">)</span>
+    <span class="k">def</span> <span class="nf">test_that</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="pgcssn">loader</span> <span class="pgcsso">=</span> <span class="pgcssn">unittest</span><span class="pgcsso">.</span><span class="pgcssn">TestLoader</span><span class="pgcssp">()</span>
-<span class="pgcssn">suite</span> <span class="pgcsso">=</span> <span class="pgcssn">loader</span><span class="pgcsso">.</span><span class="pgcssn">loadTestsFromTestCase</span><span class="pgcssp">(</span><span class="pgcssn">TestMe</span><span class="pgcssp">)</span>
-<span class="pgcssn">result</span> <span class="pgcsso">=</span> <span class="pgcssn">unittest</span><span class="pgcsso">.</span><span class="pgcssn">TestResult</span><span class="pgcssp">()</span>
-<span class="pgcssn">suite</span><span class="pgcsso">.</span><span class="pgcssn">run</span><span class="pgcssp">(</span><span class="pgcssn">result</span><span class="pgcssp">)</span> <span class="pgcssc1"># run actually returns result as well as populating it</span>
-<span class="pgcssk">print</span> <span class="pgcssn">result</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestLoader</span><span class="p">()</span>
+<span class="n">suite</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromTestCase</span><span class="p">(</span><span class="n">TestMe</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestResult</span><span class="p">()</span>
+<span class="n">suite</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># run actually returns result as well as populating it</span>
+<span class="k">print</span> <span class="n">result</span>
 </pre></div>
-</td></tr></table><pre class="code python literal-block">
+<pre class="code python literal-block">
 <span class="o">&lt;</span><span class="n">unittest</span> <span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">testresult</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">failures</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">run</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;</span>
 </pre>
 <p>The variable 'result' is an instance of unittest.TestResult() and has a rich set of attributes and methods as <a class="reference external" href="https://docs.python.org/2/library/unittest.html#unittest.TestResult">documented
