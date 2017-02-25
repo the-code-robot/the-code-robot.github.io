@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width">
-  <title>CodeRobot - health</title>
+  <title>CodeRobot - android</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
     <link rel="stylesheet" href="http://coderobot.downley.net/theme/css/main.b86f5cf5.css">
@@ -42,7 +42,7 @@
              href="http://coderobot.downley.net/category/misc.html">misc</a>
           <a class="nav-item is-tab "
              href="http://coderobot.downley.net/category/microservices.html">microservices</a>
-          <a class="nav-item is-tab "
+          <a class="nav-item is-tab is-active"
              href="http://coderobot.downley.net/category/android.html">android</a>
     </div>
   </div>
@@ -54,31 +54,47 @@
       <aside id="featured" class="body">
         <article>
           <h1 class="title">
-            <a href="http://coderobot.downley.net/programming-is-bad-for-your-health.html">Programming is bad for your health</a>
+            <a href="http://coderobot.downley.net/android-studio-up-and-running.html">Android Studio up and running</a>
           </h1>
 <footer class="post-info">
-  <abbr class="published" title="2015-06-11T21:13:00+01:00">
-    Published <span class="is-info">Thu 11 June 2015</span>
-    in <a href="http://coderobot.downley.net/category/misc.html">misc</a>
+  <abbr class="published" title="2015-06-14T11:25:00+01:00">
+    Published <span class="is-info">Sun 14 June 2015</span>
+    in <a href="http://coderobot.downley.net/category/android.html">android</a>
   </abbr>
 
     <p class="author">
       <em>by           <a class="url fn" href="http://coderobot.downley.net/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
 </em>
-      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/health.html">health</a></span>
-      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/wellbeing.html">wellbeing</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/android.html">android</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/android-studio.html">android studio</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/ant.html">ant</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/gradle.html">gradle</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/zipzipbooks.html">zipzipbooks</a></span>
     </p>
   
 </footer>          <div class="section">
-            <p>I've just been reading this article on <a class="reference external" href="http://health.stackexchange.com/questions/124/why-is-sitting-for-long-periods-unhealthy">why sitting still is bad for
-you</a>
-and, if I read it right, standing still is not much better .
-It is hardly news. We were designed to be active. But it is always
-uncomfortable to have the abstract awareness of harm condensed to actual
-damage vectors.
-I've tried for years to get going the Pomodoro principle - but my
-concentration span doesn't seem to like the short 25 minute periodicity.
-Time to make more effort perhaps.</p>
+            <p>My standard development environment for native Android development has
+been Vim and Ant.</p>
+<p>Today I finally took the plunge and got started with Android Studio
+(AS).</p>
+<p>I ported in ZipZipBooks, which is my mobile record keeping application
+for HMRC with a view to giving at a bit of a refresh. Didn't take too
+long to get it up and running on AS.</p>
+<p>Key issues:</p>
+<ol class="arabic simple">
+<li>The code for the existing project is in a Mercrurial repository. My
+first attempt to import the project, I went down the &quot;Check out the
+project from version control&quot; route, and chose Mercurial.
+Unfortunately this did not play niceley with Gradle. Instead, I found
+that I could instead start with the &quot;Import Project&quot; route. That
+allowed AS to convert my Ant build to Gradle.</li>
+<li>Adding library dependencies for which <a class="reference external" href="http://stackoverflow.com/a/18321935/4999639">this
+answer</a> was very
+helpful;</li>
+<li>I might need to get a faster/bigger/hotter/noisier laptop.</li>
+<li>Running on Windows 8, there was no need to update any drivers for the
+physical Android devices on which I performed testing.</li>
+</ol>
 
           </div>
         </article>
