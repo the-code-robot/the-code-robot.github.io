@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width">
+  <title>CodeRobot - android</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/css/main.b86f5cf5.css">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/webassets-external/4d92bbcfd30eb7aa35e64c3c5a2a4c20_print.css" media="print">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/webassets-external/62030ef326d568f512068446c46e4ed9_pygment.css">
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body id="index" class="home">
+<header class="hero is-primary">
+  <div class="hero-head">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="nav-item is-brand title is-3"
+             href="http://coderobot.downley.net/">CodeRobot</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="nav has-shadow is-hidden-print">
+  <div class="container">
+    <div class="nav-center"></div>
+    <span id="navToggle" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div id="navMenu" class="nav-right nav-menu">
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/tooling.html">tooling</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/misc.html">misc</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/microservices.html">microservices</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/android.html">android</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="section columns">
+    <div class="column is-three-quarters-desktop is-two-thirds-tablet">
+      <aside id="featured" class="body">
+        <article>
+          <h1 class="title">
+            <a href="http://coderobot.downley.net/android-studio-up-and-running.html">Android Studio up and running</a>
+          </h1>
+<footer class="post-info">
+  <abbr class="published" title="2015-06-14T11:25:00+01:00">
+    Published <span class="is-info">Sun 14 June 2015</span>
+    in <a href="http://coderobot.downley.net/category/android.html">android</a>
+  </abbr>
+
+    <p class="author">
+      <em>by           <a class="url fn" href="http://coderobot.downley.net/author/robin-abbi-noreplybloggercom.html">Robin Abbi (noreply@blogger.com)</a>
+</em>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/android.html">android</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/android-studio.html">android studio</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/ant.html">ant</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/gradle.html">gradle</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/zipzipbooks.html">zipzipbooks</a></span>
+    </p>
+  
+</footer>          <div class="section">
+            <p>My standard development environment for native Android development has
+been Vim and Ant.</p>
+<p>Today I finally took the plunge and got started with Android Studio
+(AS).</p>
+<p>I ported in ZipZipBooks, which is my mobile record keeping application
+for HMRC with a view to giving at a bit of a refresh. Didn't take too
+long to get it up and running on AS.</p>
+<p>Key issues:</p>
+<ol class="arabic simple">
+<li>The code for the existing project is in a Mercrurial repository. My
+first attempt to import the project, I went down the &quot;Check out the
+project from version control&quot; route, and chose Mercurial.
+Unfortunately this did not play niceley with Gradle. Instead, I found
+that I could instead start with the &quot;Import Project&quot; route. That
+allowed AS to convert my Ant build to Gradle.</li>
+<li>Adding library dependencies for which <a class="reference external" href="http://stackoverflow.com/a/18321935/4999639">this
+answer</a> was very
+helpful;</li>
+<li>I might need to get a faster/bigger/hotter/noisier laptop.</li>
+<li>Running on Windows 8, there was no need to update any drivers for the
+physical Android devices on which I performed testing.</li>
+</ol>
+
+          </div>
+        </article>
+      </aside>
+    </div>
+
+    <div class="column is-one-quarter-desktop is-one-third-tablet is-hidden-print">
+      <aside class="menu">
+          <p class="menu-label">other pages</p>
+          <ul class="menu-list">
+                <li><a                        href="http://coderobot.downley.net/pages/about.html">
+                  <span class="icon is-small"><i class="fa fa-book"></i></span>
+                  <span class="link-text">About</span>
+                </a></li>
+          </ul>
+          <p class="menu-label">other sites</p>
+          <ul class="menu-list">
+              <li><a href="https://www.w3.org/standards/semanticweb/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Semantic Web</span>
+              </a></li>
+              <li><a href="http://hintjens.com/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Pieter Hintjens</span>
+              </a></li>
+              <li><a href="http://python.org/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Python.org</span>
+              </a></li>
+              <li><a href="http://jinja.pocoo.org/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Jinja2</span>
+              </a></li>
+          </ul>
+<p class="menu-label">social</p>
+<ul class="menu-list">
+    <li><a href="https://twitter.com/_coderobot">
+      <span class="icon is-small">
+          <i class="fa fa-twitter fa-fw"></i>
+      </span>
+      <span class="link-text">twitter</span>
+    </a></li>
+    <li><a href="https://www.linkedin.com/in/robinabbi/">
+      <span class="icon is-small">
+          <i class="fa fa-linkedin fa-fw"></i>
+      </span>
+      <span class="link-text">linkedin</span>
+    </a></li>
+    <li><a href="http://stackoverflow.com/users/4999639/coderobot">
+      <span class="icon is-small">
+          <i class="fa fa-globe fa-fw"></i>
+      </span>
+      <span class="link-text">stackoverflow</span>
+    </a></li>
+</ul>      </aside>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+    <p>Theme by <a href="http://hello.jonrshar.pe">Jonathan Sharpe</a>
+      | <span class="icon is-small"><i class="fa fa-html5"></i></span> HTML 5
+      | <span class="icon is-small"><i class="fa fa-css3"></i></span> CSS 3
+    </p>
+  </div>
+</footer>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-92650351-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+  document.getElementById('navToggle').addEventListener('click', function () {
+    var nav = document.getElementById('navMenu');
+    var className = nav.getAttribute('class');
+    if (className == 'nav-right nav-menu') {
+      nav.className = 'nav-right nav-menu is-active';
+    } else {
+      nav.className = 'nav-right nav-menu';
+    }
+  });
+</script>
+</body>
+</html>
