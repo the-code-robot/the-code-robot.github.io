@@ -14,7 +14,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 <meta property="og:title" content="CodeRobot - Swagger testing in Python">
-  <meta property="og:description" content="TL;DR OpenAPI/Swagger can be the governing document for your microservice. Tools are now available to support the workflow: create swagger yaml, create swagger implementation tests, creat...">
+  <meta property="og:description" content="TL;DR OpenAPI/Swagger can be the governing document for your microservice. Tools are now available to support the workflow: create swagger yaml, validate yaml, create swagger implementation tests,...">
 <meta property="og:url" content="http://coderobot.downley.net/swagger-testing-in-python.html">
 <meta name="twitter:card" content="summary">
 </head>
@@ -80,10 +80,18 @@
   
 </footer>    <div class="section"><div class="section" id="tl-dr">
 <h2>TL;DR</h2>
-<p>OpenAPI/Swagger can be the governing document for your microservice. Tools are now available to support the workflow: create swagger yaml, create swagger implementation tests, creat microservice implemention.</p>
+<p>OpenAPI/Swagger can be the governing document for your microservice. Tools are now available to support the workflow: create swagger yaml, validate yaml, create swagger implementation tests, create microservice implemention.</p>
 </div>
 <div class="section" id="overview">
 <h2>Overview</h2>
+<p>In microservices architecture, it is important to document and publish the public API. Swagger provides a framework to help you. Introducing Swagger means there are (at least) two descriptions of the API: the Swagger specification and the definition implicit in the implementation of your service. This gives a choice: get your code correct and then create a Swagger specification or create your Swagger definition and then write your code to match. I have tried each method concluding the latter works better for me. Your mileage may vary.</p>
+<p>The steps are:
+1. Write Swagger specification
+2. Validate Swagger specification
+3. Write Swagger tests
+4. Run Swagger tests.
+5. Write service implementation.
+6. Iterate until happy.</p>
 </div>
 </div>
 
