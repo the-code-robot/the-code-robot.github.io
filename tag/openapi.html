@@ -95,6 +95,89 @@
 </dd>
 </dl>
 </div>
+<div class="section" id="step-1-write-swagger-specification">
+<h2>Step 1 Write Swagger Specification</h2>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">swagger</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">info</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet Shop Example API</span>
+  <span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&quot;0.1&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">consumes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="l l-Scalar l-Scalar-Plain">produces</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="l l-Scalar l-Scalar-Plain">security</span><span class="p p-Indicator">:</span>
+  <span class="c1"># enable OAuth protection for all REST endpoints</span>
+  <span class="c1"># (only active if the TOKENINFO_URL environment variable is set)</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">oauth2</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">uid</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">paths</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">/pets</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">get</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">Pets</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">operationId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">swagproj.get_pets</span>
+      <span class="l l-Scalar l-Scalar-Plain">summary</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Get all pets</span>
+      <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">animal_type</span>
+          <span class="l l-Scalar l-Scalar-Plain">in</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+          <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&quot;^[a-zA-Z0-9]*$&quot;</span>
+          <span class="l l-Scalar l-Scalar-Plain">x-example</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">dog</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">limit</span>
+          <span class="l l-Scalar l-Scalar-Plain">in</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+          <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+          <span class="l l-Scalar l-Scalar-Plain">minimum</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+          <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+          <span class="l l-Scalar l-Scalar-Plain">x-example</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">99</span>
+      <span class="l l-Scalar l-Scalar-Plain">responses</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">200</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Return pets</span>
+          <span class="l l-Scalar l-Scalar-Plain">schema</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+            <span class="l l-Scalar l-Scalar-Plain">items</span><span class="p p-Indicator">:</span>
+              <span class="l l-Scalar l-Scalar-Plain">$ref</span><span class="p p-Indicator">:</span> <span class="s">&#39;#/definitions/Pet&#39;</span>
+          <span class="l l-Scalar l-Scalar-Plain">examples</span><span class="p p-Indicator">:</span>
+            <span class="s">&#39;application/json&#39;</span><span class="p p-Indicator">:</span>
+              <span class="l l-Scalar l-Scalar-Plain">cheese</span><span class="p p-Indicator">:</span> <span class="s">&quot;cheddar&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">definitions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">Pet</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">animal_type</span>
+    <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Unique identifier</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;123&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">readOnly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet&#39;s name</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;Susie&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">minLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+        <span class="l l-Scalar l-Scalar-Plain">maxLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+      <span class="l l-Scalar l-Scalar-Plain">animal_type</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Kind of animal</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;cat&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">minLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="l l-Scalar l-Scalar-Plain">created</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date-time</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Creation time</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;2015-07-07T15:49:51.230+02:00&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">readOnly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+
+<span class="l l-Scalar l-Scalar-Plain">securityDefinitions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">oauth2</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">oauth2</span>
+    <span class="l l-Scalar l-Scalar-Plain">flow</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">implicit</span>
+    <span class="l l-Scalar l-Scalar-Plain">authorizationUrl</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/oauth2/dialog</span>
+    <span class="l l-Scalar l-Scalar-Plain">scopes</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">uid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Unique identifier of the user accessing the service.</span>
+</pre></div>
+</div>
 
           </div>
         </article>
