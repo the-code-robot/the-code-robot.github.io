@@ -197,17 +197,18 @@ petshop.yaml is valid
 <div class="highlight"><pre><span></span>$ pip install connexion
 </pre></div>
 <p>Then import connexion into your bare flask application:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">connexion</span>
+<div class="highlight"><pre><span></span><span class="c1"># app.py</span>
+<span class="kn">import</span> <span class="nn">connexion</span>
 
-    <span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger/my_api.yaml&#39;</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger/my_api.yaml&#39;</span><span class="p">)</span>
 
-    <span class="c1"># set the WSGI application callable to allow using uWSGI:</span>
-    <span class="c1"># uwsgi --http :8080 -w app</span>
-    <span class="n">application</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">app</span>
+<span class="c1"># set the WSGI application callable to allow using uWSGI:</span>
+<span class="c1"># uwsgi --http :8080 -w app</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">app</span>
 
-    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
 </pre></div>
 </div>
 
