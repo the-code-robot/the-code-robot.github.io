@@ -101,6 +101,7 @@
 <div class="section" id="step-1-write-swagger-specification">
 <h2>Step 1 Write Swagger Specification</h2>
 <p>Before getting started, a word of advice. I found that it was best to start with a minimal swagger specfication. There is an interplay between the swagger file, the application and the application tests which can make it tricky to work out whether it is your code which is not working properly or whether it is your test setup. Starting with the smallest swagger file (ideally only one http method and endpoint (eg GET /pets from the code example below) means you will only have one function to implement in your application in order to achieve passing tests, It also means your swagger file should be quick and easy to validate. Once you get a working setup it will be easy to extend.</p>
+<p>Note in the yaml example below the use of the fields operationId and x-example. operationId references a method get_pets in a python module swagproj which you create later. x-example fields are the values that will be used to test your code by the swagger-tester application.</p>
 <div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">swagger</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 <span class="l l-Scalar l-Scalar-Plain">info</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet Shop Example API</span>
@@ -200,7 +201,7 @@ petshop.yaml is valid
 <div class="highlight"><pre><span></span>$ pip install connexion
 </pre></div>
 <p>Then import connexion into your bare flask application:</p>
-<div class="highlight"><pre><span></span><span class="c1"># app.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># swagproj.py</span>
 <span class="kn">import</span> <span class="nn">connexion</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
