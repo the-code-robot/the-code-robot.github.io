@@ -100,6 +100,7 @@
 </div>
 <div class="section" id="step-1-write-swagger-specification">
 <h2>Step 1 Write Swagger Specification</h2>
+<p>Before getting started, a word of advice. I found that it was best to start with a minimal swagger specfication. There is an interplay between the swagger file, the application and the application tests which can make it tricky to work out whether it is your code which is not working properly or whether it is your test setup. Starting with the smallest swagger file (ideally only one http method and endpoint (eg GET /my-endpoint) means you will only have one function to implement in your application in order to achieve passing tests, It also means your swagger file should be quick and easy to validate. Once you get a working setup it will be easy to extend.</p>
 <div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">swagger</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 <span class="l l-Scalar l-Scalar-Plain">info</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet Shop Example API</span>
@@ -185,7 +186,7 @@
 <h2>Step 2 Validate Swagger Specification</h2>
 <p>I use <a class="reference external" href="https://www.npmjs.com/package/swagger-cli">https://www.npmjs.com/package/swagger-cli</a> to perform command line validation.</p>
 <p>Installation:</p>
-<p>npm -g install swagger-cli</p>
+<p>sudo -H npm -g install swagger-cli</p>
 <p>Usage:</p>
 <p>swagger validate petshop.yaml</p>
 </div>
