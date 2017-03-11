@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="URu_0DI3qM1xu53Szlru2sw9xpANP5QC6ZiPBYz6_Pk" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width">
+  <title>CodeRobot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/css/main.b86f5cf5.css">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/webassets-external/4d92bbcfd30eb7aa35e64c3c5a2a4c20_print.css" media="print">
+    <link rel="stylesheet" href="http://coderobot.downley.net/theme/webassets-external/62030ef326d568f512068446c46e4ed9_pygment.css">
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body id="index" class="home">
+<header class="hero is-primary">
+  <div class="hero-head">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="nav-item is-brand title is-3 is-active"
+             href="http://coderobot.downley.net/">CodeRobot</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="nav has-shadow is-hidden-print">
+  <div class="container">
+    <div class="nav-center"></div>
+    <span id="navToggle" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div id="navMenu" class="nav-right nav-menu">
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/tooling.html">tooling</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/misc.html">misc</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/microservices.html">microservices</a>
+          <a class="nav-item is-tab "
+             href="http://coderobot.downley.net/category/android.html">android</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="section columns">
+    <div class="column is-three-quarters-desktop is-two-thirds-tablet">
+      <aside id="featured" class="body">
+        <article>
+          <h1 class="title">
+            <a href="http://coderobot.downley.net/swagger-testing-in-python.html">Swagger testing in Python</a>
+          </h1>
+<footer class="post-info">
+  <abbr class="published" title="2017-02-24T22:55:00+00:00">
+    Published <span class="is-info">Fri 24 February 2017</span>
+    in <a href="http://coderobot.downley.net/category/microservices.html">microservices</a>
+  </abbr>
+
+    <p class="author">
+      <em>by           <a class="url fn" href="http://coderobot.downley.net/author/robin-abbi-robinabbidownleynet.html">Robin Abbi (robin.abbi@downley.net)</a>
+</em>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/testing.html">testing</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/swagger.html">swagger</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/openapi.html">openapi</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/python.html">python</a></span>
+      <span class="tag is-small"><a href="http://coderobot.downley.net/tag/microservices.html">microservices</a></span>
+    </p>
+  
+</footer>          <div class="section">
+            <div class="section" id="tl-dr">
+<h2>TL;DR</h2>
+<p>OpenAPI/Swagger can be the governing document for your microservice. Tools are now available to support the workflow: create swagger yaml, validate yaml, create swagger implementation tests, create microservice implemention.</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview</h2>
+<p>In microservices architecture, it is important to document and publish the public API. Swagger provides a framework to help you. Introducing Swagger means there are (at least) two descriptions of the API: the Swagger specification and the definition implicit in the implementation of your service. This gives a choice: get your code correct and then create a Swagger specification or create your Swagger definition and then write your code to match. I have tried each method concluding the latter works better for me. Your mileage may vary.</p>
+<dl class="docutils">
+<dt>The steps are:</dt>
+<dd><ol class="first last arabic simple">
+<li>Write Swagger specification</li>
+<li>Validate Swagger specification</li>
+<li>Write Swagger tests</li>
+<li>Run Swagger tests.</li>
+<li>Write service implementation.</li>
+<li>Iterate until happy.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="step-1-write-swagger-specification">
+<h2>Step 1 Write Swagger Specification</h2>
+<p>Before getting started, a word of advice. I found that it was best to start with a minimal swagger specfication. There is an interplay between the swagger file, the application and the application tests which can make it tricky to work out whether it is your code which is not working properly or whether it is your test setup. Starting with the smallest swagger file (ideally only one http method and endpoint (eg GET /pets from the code example below) means you will only have one function to implement in your application in order to achieve passing tests, It also means your swagger file should be quick and easy to validate. Once you get a working setup it will be easy to extend.</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">swagger</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">info</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet Shop Example API</span>
+  <span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&quot;0.1&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">consumes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="l l-Scalar l-Scalar-Plain">produces</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="l l-Scalar l-Scalar-Plain">security</span><span class="p p-Indicator">:</span>
+  <span class="c1"># enable OAuth protection for all REST endpoints</span>
+  <span class="c1"># (only active if the TOKENINFO_URL environment variable is set)</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">oauth2</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">uid</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">paths</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">/pets</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">get</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">Pets</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">operationId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">swagproj.get_pets</span>
+      <span class="l l-Scalar l-Scalar-Plain">summary</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Get all pets</span>
+      <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">animal_type</span>
+          <span class="l l-Scalar l-Scalar-Plain">in</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+          <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&quot;^[a-zA-Z0-9]*$&quot;</span>
+          <span class="l l-Scalar l-Scalar-Plain">x-example</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">dog</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">limit</span>
+          <span class="l l-Scalar l-Scalar-Plain">in</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+          <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+          <span class="l l-Scalar l-Scalar-Plain">minimum</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+          <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+          <span class="l l-Scalar l-Scalar-Plain">x-example</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">99</span>
+      <span class="l l-Scalar l-Scalar-Plain">responses</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">200</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Return pets</span>
+          <span class="l l-Scalar l-Scalar-Plain">schema</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+            <span class="l l-Scalar l-Scalar-Plain">items</span><span class="p p-Indicator">:</span>
+              <span class="l l-Scalar l-Scalar-Plain">$ref</span><span class="p p-Indicator">:</span> <span class="s">&#39;#/definitions/Pet&#39;</span>
+          <span class="l l-Scalar l-Scalar-Plain">examples</span><span class="p p-Indicator">:</span>
+            <span class="s">&#39;application/json&#39;</span><span class="p p-Indicator">:</span>
+              <span class="l l-Scalar l-Scalar-Plain">cheese</span><span class="p p-Indicator">:</span> <span class="s">&quot;cheddar&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">definitions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">Pet</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">animal_type</span>
+    <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Unique identifier</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;123&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">readOnly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Pet&#39;s name</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;Susie&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">minLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+        <span class="l l-Scalar l-Scalar-Plain">maxLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+      <span class="l l-Scalar l-Scalar-Plain">animal_type</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Kind of animal</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;cat&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">minLength</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="l l-Scalar l-Scalar-Plain">created</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date-time</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Creation time</span>
+        <span class="l l-Scalar l-Scalar-Plain">example</span><span class="p p-Indicator">:</span> <span class="s">&quot;2015-07-07T15:49:51.230+02:00&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">readOnly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+
+<span class="l l-Scalar l-Scalar-Plain">securityDefinitions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">oauth2</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">oauth2</span>
+    <span class="l l-Scalar l-Scalar-Plain">flow</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">implicit</span>
+    <span class="l l-Scalar l-Scalar-Plain">authorizationUrl</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/oauth2/dialog</span>
+    <span class="l l-Scalar l-Scalar-Plain">scopes</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">uid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Unique identifier of the user accessing the service.</span>
+</pre></div>
+</div>
+<div class="section" id="step-2-validate-swagger-specification">
+<h2>Step 2 Validate Swagger Specification</h2>
+<p>I use <a class="reference external" href="https://www.npmjs.com/package/swagger-cli">https://www.npmjs.com/package/swagger-cli</a> to perform command line validation.</p>
+<p>Installation:</p>
+<div class="highlight"><pre><span></span>sudo -H npm -g install swagger-cli
+
+<span class="c1"># Usage:</span>
+
+swagger validate petshop.yaml
+</pre></div>
+<p>here we go.</p>
+</div>
+
+          </div>
+        </article>
+      </aside>
+  <div class="is-hidden-print">
+    <h2 class="subtitle">Other articles</h2>
+<nav class="pagination is-centered">
+  <a class="pagination-previous is-disabled"
+      href="http://coderobot.downley.net/">
+    Previous
+  </a>
+  <a class="pagination-next is-disabled"
+      href="http://coderobot.downley.net/">
+    Next page
+  </a>
+  <ul class="pagination-list">
+    <li>Page 1 / 1</li>
+  </ul>
+</nav>
+<br>    <div class="columns is-multiline">
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/use-python-instead-of-bash-for-devops.html">
+                <h3 class="title is-5">Use Python instead of Bash for DevOps</h3>
+                <div class="heading subtitle">Sun 01 January 2017</div>
+                <div><p>Maximize resources on the application When working on a project it seems wrong to spend more time on the...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/docker-image-names-registries-and-repositories.html">
+                <h3 class="title is-5">Docker image names, registries and repositories</h3>
+                <div class="heading subtitle">Thu 29 December 2016</div>
+                <div><p>A docker push or pull command requires an image name whose structure is: [<registry>/]<repository>[:<tag>] The...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/vim-security.html">
+                <h3 class="title is-5">Vim security</h3>
+                <div class="heading subtitle">Wed 06 January 2016</div>
+                <div><p>I've just read https://glyph.twistedmatrix.com/2015/11/editor-malware.html and...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/a-python-christmas-present.html">
+                <h3 class="title is-5">A Python Christmas present</h3>
+                <div class="heading subtitle">Tue 22 December 2015</div>
+                <div><p>Nose is my current Python testing framework of choice. When I'm doing TDD which is more or less all the time*,...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/jupyter-notebooks.html">
+                <h3 class="title is-5">Jupyter notebooks</h3>
+                <div class="heading subtitle">Tue 22 December 2015</div>
+                <div><p>My typical working setup is a headless GNU/Linux VM which I access via ssh. This means that when I working in...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/probability-in-business.html">
+                <h3 class="title is-5">Probability in business</h3>
+                <div class="heading subtitle">Mon 21 December 2015</div>
+                <div><p>As someone who has put together quite a few business plans over the years, this short (4 minute) video from...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/scrum-and-working-code.html">
+                <h3 class="title is-5">Scrum and Working Code</h3>
+                <div class="heading subtitle">Mon 21 December 2015</div>
+                <div><p>So I bought this machine for the production line. Who'd you get it from? Acme. I told them what I needed, they...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/using-python-unittest-outside-a-testing-environment.html">
+                <h3 class="title is-5">Using Python unittest outside a testing environment</h3>
+                <div class="heading subtitle">Mon 21 December 2015</div>
+                <div><p>Test frameworks are not just for testing code during development and deployment. Test frameworks may also be...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/python3-namespace-packages-using-wheels.html">
+                <h3 class="title is-5">Python3 Namespace Packages Using Wheels</h3>
+                <div class="heading subtitle">Sun 06 December 2015</div>
+                <div><p>I was experimenting with Python3.4 and namespace packages. Here's what I did. I created two completely...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/getting-started-with-sphinx.html">
+                <h3 class="title is-5">Getting started with Sphinx</h3>
+                <div class="heading subtitle">Sat 05 December 2015</div>
+                <div><p>I really like pdoc as a great lightweight python source code documentation tool. I like to invoke it:...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/python-logging.html">
+                <h3 class="title is-5">Python Logging</h3>
+                <div class="heading subtitle">Sat 29 August 2015</div>
+                <div><p>Just pulling together the best of the web on Python logging: https://docs.python.org/2/library/logging.html...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/android-studio-up-and-running.html">
+                <h3 class="title is-5">Android Studio up and running</h3>
+                <div class="heading subtitle">Sun 14 June 2015</div>
+                <div><p>My standard development environment for native Android development has been Vim and Ant. Today I finally took...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/reading-vs-doing.html">
+                <h3 class="title is-5">Reading vs Doing</h3>
+                <div class="heading subtitle">Sat 13 June 2015</div>
+                <div><p>I was greatly enjoying reading this article on coding when I got to the section on Django and decided that...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/django-high-level-mind-map.html">
+                <h3 class="title is-5">Django High Level Mind Map</h3>
+                <div class="heading subtitle">Sat 13 June 2015</div>
+                <div><p>Mind maps really suit my way of organizing knowledge. Here is a link to pdf of my high-level Django mind map....<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/the-monty-hall-problem.html">
+                <h3 class="title is-5">The Monty Hall Problem</h3>
+                <div class="heading subtitle">Fri 12 June 2015</div>
+                <div><p>The Monty Hall problem is great fun. Here's how I rationalise it. There are three doors. I have to choose one....<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/programming-is-bad-for-your-health.html">
+                <h3 class="title is-5">Programming is bad for your health</h3>
+                <div class="heading subtitle">Thu 11 June 2015</div>
+                <div><p>I've just been reading this article on why sitting still is bad for you and, if I read it right, standing...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/github-profile.html">
+                <h3 class="title is-5">GitHub Profile</h3>
+                <div class="heading subtitle">Thu 11 June 2015</div>
+                <div><p>Because a number of third party services seem to believe that you cannot possibly be a serious programmer...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/update-to-make_sslcertpy-script.html">
+                <h3 class="title is-5">update to make_sslcert.py script</h3>
+                <div class="heading subtitle">Fri 09 March 2012</div>
+                <div><p>#!/usr/bin/env python """ A self-signed certificate generator. "openssl genrsa" generates a private key...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/qooxdoo-generatepy-source-source-all.html">
+                <h3 class="title is-5">Qooxdoo generate.py source, source-all</h3>
+                <div class="heading subtitle">Fri 21 October 2011</div>
+                <div><p>Health warning - this may not be accurate but it reflects my current understanding. When you write an...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/generate-self-signed-ssl-cert.html">
+                <h3 class="title is-5">Generate self-signed SSL cert</h3>
+                <div class="heading subtitle">Thu 30 June 2011</div>
+                <div><p>#!/usr/bin/env python """ A self-signed certificate generator. """ import os _name="server" commands = [...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/debian-packaging.html">
+                <h3 class="title is-5">Debian Packaging</h3>
+                <div class="heading subtitle">Mon 27 June 2011</div>
+                <div><p>How I made a .deb file Create a directory mkdir foo Descend into it. cd foo Create a directory DEBIAN mkdir...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/getting-started-with-google-adsense.html">
+                <h3 class="title is-5">Getting Started with Google Adsense</h3>
+                <div class="heading subtitle">Sun 27 March 2011</div>
+                <div><p></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/shindig-on-ubuntu.html">
+                <h3 class="title is-5">Shindig on Ubuntu</h3>
+                <div class="heading subtitle">Sat 15 January 2011</div>
+                <div><p>I was busy building a Google Gadget when I ran into a glitch. My gadget worked fine in the gagdget container...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/couchdb.html">
+                <h3 class="title is-5">CouchDB</h3>
+                <div class="heading subtitle">Mon 04 May 2009</div>
+                <div><p>To run a view http://<server>/<database>/_design/<design-doc-name>/_view/<view_name></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/great-xlink-primer.html">
+                <h3 class="title is-5">Great XLink Primer</h3>
+                <div class="heading subtitle">Sun 01 June 2008</div>
+                <div><p>Melonfire have a great xlink primer.</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/plone-and-subversion.html">
+                <h3 class="title is-5">Plone and Subversion</h3>
+                <div class="heading subtitle">Fri 16 May 2008</div>
+                <div><p>When making a plone product in subversion, setup the repository thus:...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="http://coderobot.downley.net/create-a-custom-content-type-in-plone3.html">
+                <h3 class="title is-5">Create a custom content type in Plone3</h3>
+                <div class="heading subtitle">Sun 27 April 2008</div>
+                <div><p>paster create -t plone <somepackage.somemodule> Then edit the buildout.cfg to record the egg in the: eggs...<br /></p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+    </div>
+
+    <div class="column is-one-quarter-desktop is-one-third-tablet is-hidden-print">
+      <aside class="menu">
+          <p class="menu-label">other pages</p>
+          <ul class="menu-list">
+                <li><a                        href="http://coderobot.downley.net/pages/about.html">
+                  <span class="icon is-small"><i class="fa fa-book"></i></span>
+                  <span class="link-text">About</span>
+                </a></li>
+          </ul>
+          <p class="menu-label">other sites</p>
+          <ul class="menu-list">
+              <li><a href="https://www.w3.org/standards/semanticweb/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Semantic Web</span>
+              </a></li>
+              <li><a href="http://hintjens.com/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Pieter Hintjens</span>
+              </a></li>
+              <li><a href="http://python.org/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Python.org</span>
+              </a></li>
+              <li><a href="http://jinja.pocoo.org/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Jinja2</span>
+              </a></li>
+          </ul>
+<p class="menu-label">social</p>
+<ul class="menu-list">
+    <li><a href="https://twitter.com/_coderobot">
+      <span class="icon is-small">
+          <i class="fa fa-twitter fa-fw"></i>
+      </span>
+      <span class="link-text">twitter</span>
+    </a></li>
+    <li><a href="https://www.linkedin.com/in/robinabbi/">
+      <span class="icon is-small">
+          <i class="fa fa-linkedin fa-fw"></i>
+      </span>
+      <span class="link-text">linkedin</span>
+    </a></li>
+    <li><a href="http://stackoverflow.com/users/4999639/coderobot">
+      <span class="icon is-small">
+          <i class="fa fa-globe fa-fw"></i>
+      </span>
+      <span class="link-text">stackoverflow</span>
+    </a></li>
+</ul>      </aside>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+    <p>Theme by <a href="http://hello.jonrshar.pe">Jonathan Sharpe</a>
+      | <span class="icon is-small"><i class="fa fa-html5"></i></span> HTML 5
+      | <span class="icon is-small"><i class="fa fa-css3"></i></span> CSS 3
+    </p>
+  </div>
+</footer>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-92650351-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+  document.getElementById('navToggle').addEventListener('click', function () {
+    var nav = document.getElementById('navMenu');
+    var className = nav.getAttribute('class');
+    if (className == 'nav-right nav-menu') {
+      nav.className = 'nav-right nav-menu is-active';
+    } else {
+      nav.className = 'nav-right nav-menu';
+    }
+  });
+</script>
+</body>
+</html>
