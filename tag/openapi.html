@@ -237,7 +237,14 @@ petshop.yaml is valid
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
 </pre></div>
-<p>Now your application should start.</p>
+<p>Now your application should start. As a bonus, the swagger ui is available at '<a class="reference external" href="http:/">http:/</a>/&lt;your-server-name&gt;:8080/ui'.</p>
+<p>Let's review what we have achieved:</p>
+<ul class="simple">
+<li>Written a swagger specification</li>
+<li>Validated the swagger specification</li>
+<li>Implemented a basic http server which refuses to start unless the swagger endpoints have implementations (even if they are just stubs.)</li>
+<li>Got free access to the swagger ui with no extra work.</li>
+</ul>
 </div>
 
           </div>
