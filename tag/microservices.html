@@ -221,7 +221,7 @@ petshop.yaml is valid
 
 <span class="k">def</span> <span class="nf">get_pets</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">[{</span>
-        <span class="s1">&#39;animal_type&#39;</span><span class="p">:</span> <span class="s1">&#39;XXXcat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;animal_type&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
         <span class="s1">&#39;created&#39;</span><span class="p">:</span> <span class="s1">&#39;2015-07-07T15:49:51.230+02:00&#39;</span><span class="p">,</span>
         <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
         <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Susie&#39;</span><span class="p">}]</span>
@@ -245,6 +245,21 @@ petshop.yaml is valid
 <li>Implemented a basic http server which refuses to start unless the swagger endpoints have implementations (even if they are just stubs.)</li>
 <li>Got free access to the swagger ui with no extra work.</li>
 </ul>
+<p>Next shall create try to see if we can use the information in our swagger specification to test our implementation.</p>
+</div>
+<div class="section" id="step-4-use-swagger-specfication-to-test-implementation">
+<h2>Step 4 Use swagger specfication to test implementation</h2>
+<div class="highlight"><pre><span></span><span class="c1"># test_swagproj.py</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">swagger_tester</span> <span class="kn">import</span> <span class="n">swagger_test</span>
+
+
+<span class="k">class</span> <span class="nc">TestTester</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">swagger_test</span><span class="p">(</span><span class="n">app_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">,</span> <span class="n">use_example</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
 </div>
 
           </div>
