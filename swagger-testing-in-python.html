@@ -252,6 +252,10 @@ petshop.yaml is valid
 </div>
 <div class="section" id="step-4-use-swagger-specfication-to-test-implementation">
 <h2>Step 4 Use swagger specfication to test implementation</h2>
+<p>First install <a class="reference external" href="https://github.com/Trax-air/swagger-tester">https://github.com/Trax-air/swagger-tester</a> .</p>
+<div class="highlight"><pre><span></span>$ pip install swagger-tester
+</pre></div>
+<p>Then you can move on to writing the actual test.</p>
 <div class="highlight"><pre><span></span><span class="c1"># test_swagproj.py</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
@@ -263,6 +267,8 @@ petshop.yaml is valid
     <span class="k">def</span> <span class="nf">test_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">swagger_test</span><span class="p">(</span><span class="n">app_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">,</span> <span class="n">use_example</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
+<p>As you can see, the test assumes that you have an instance of your application up and serving. If this is not the case your tests won't work. There is a mode within swagger-tester which works via a swagger yaml specification file directly - it uses it to start a connexion server in another thread, however I have not yet worked out how to get this mode to execute.</p>
+<p>As you would expect, if you wish to use this test setup, you may wish to initialize your application with test fixtures for the database if there is any chance of your tests affecting production systems.</p>
 </div>
 </div>
 
