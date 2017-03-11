@@ -185,7 +185,6 @@
 <div class="section" id="step-2-validate-swagger-specification">
 <h2>Step 2 Validate Swagger Specification</h2>
 <p>I use <a class="reference external" href="https://www.npmjs.com/package/swagger-cli">https://www.npmjs.com/package/swagger-cli</a> to perform command line validation.</p>
-<p>Installation:</p>
 <div class="highlight"><pre><span></span>$ sudo -H npm -g install swagger-cli
 
 <span class="c1"># Usage:</span>
@@ -193,7 +192,26 @@
 $ swagger validate petshop.yaml
 petshop.yaml is valid
 </pre></div>
-<p>here we go.</p>
+<p>Now that we a minimal validated swagger specification the first thing to do is to test it out. This involves creating a bare flask application and using the swagger file to automagically create the flask application endpoints within it.</p>
+</div>
+<div class="section" id="step-3-create-bare-flask-application">
+<h2>Step 3 Create Bare Flask Application</h2>
+<p>The magic that makes all this possible is the <a class="reference external" href="https://github.com/zalando/connexion">https://github.com/zalando/connexion</a> project. Add it to your project:</p>
+<div class="highlight"><pre><span></span>$ pip install connexion
+</pre></div>
+<p>Then import connexion into your bare flask application:</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">connexion</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger/my_api.yaml&#39;</span><span class="p">)</span>
+
+    <span class="c1"># set the WSGI application callable to allow using uWSGI:</span>
+    <span class="c1"># uwsgi --http :8080 -w app</span>
+    <span class="n">application</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">app</span>
+
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 
