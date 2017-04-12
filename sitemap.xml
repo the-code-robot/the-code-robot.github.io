@@ -5,42 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/</loc>
-<lastmod>2017-04-11T10:08:43-00:00</lastmod>
+<lastmod>2017-04-12T21:54:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/archives.html</loc>
-<lastmod>2017-04-11T10:08:43-00:00</lastmod>
+<lastmod>2017-04-12T21:54:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/tags.html</loc>
-<lastmod>2017-04-11T10:08:43-00:00</lastmod>
+<lastmod>2017-04-12T21:54:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/categories.html</loc>
-<lastmod>2017-04-11T10:08:43-00:00</lastmod>
+<lastmod>2017-04-12T21:54:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/pages/about.html</loc>
-<lastmod>2017-04-11T10:08:43-00:00</lastmod>
+<lastmod>2017-04-12T21:54:40-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/reflections-on-a-random-project.html</loc>
-<lastmod>2017-04-11T10:00:00+01:00</lastmod>
+<lastmod>2017-04-11T10:01:00+01:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -250,7 +250,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/category/engineering.html</loc>
-<lastmod>2017-04-11T10:00:00-00:01</lastmod>
+<lastmod>2017-04-11T10:01:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -460,7 +460,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/tag/python.html</loc>
-<lastmod>2017-04-11T10:00:00-00:01</lastmod>
+<lastmod>2017-04-11T10:01:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -607,7 +607,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/author/robin-abbi-noreplybloggercom.html</loc>
-<lastmod>2017-04-11T10:00:00-00:01</lastmod>
+<lastmod>2017-04-11T10:01:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
