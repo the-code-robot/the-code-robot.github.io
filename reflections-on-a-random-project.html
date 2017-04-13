@@ -92,11 +92,10 @@
 <li>Deeply nested context managers.</li>
 <li>When implementing context managers, sometimes they are defined:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typ</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">trc</span><span class="p">):</span>
-      <span class="k">pass</span>
-
-<span class="ow">and</span> <span class="n">at</span> <span class="n">other</span> <span class="n">times</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typ</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">trc</span><span class="p">):</span>
+    <span class="k">pass</span>
 </pre></div>
+<p>and at other times:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
