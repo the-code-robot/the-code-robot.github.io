@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/</loc>
-<lastmod>2017-04-23T08:52:51-00:00</lastmod>
+<lastmod>2017-04-23T08:53:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/archives.html</loc>
-<lastmod>2017-04-23T08:52:51-00:00</lastmod>
+<lastmod>2017-04-23T08:53:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/tags.html</loc>
-<lastmod>2017-04-23T08:52:51-00:00</lastmod>
+<lastmod>2017-04-23T08:53:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/categories.html</loc>
-<lastmod>2017-04-23T08:52:51-00:00</lastmod>
+<lastmod>2017-04-23T08:53:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/pages/about.html</loc>
-<lastmod>2017-04-23T08:52:51-00:00</lastmod>
+<lastmod>2017-04-23T08:53:58-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -305,6 +305,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://coderobot.downley.net/tag/process.html</loc>
+<lastmod>2017-04-23T10:01:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://coderobot.downley.net/tag/outside-the-box.html</loc>
 <lastmod>2015-12-21T22:28:00-00:01</lastmod>
 <changefreq>daily</changefreq>
@@ -356,13 +363,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://coderobot.downley.net/tag/namespace-package.html</loc>
 <lastmod>2015-12-06T23:28:00-00:01</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://coderobot.downley.net/tag/devops.html</loc>
-<lastmod>2017-01-01T10:39:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -424,8 +424,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://coderobot.downley.net/tag/process-architecture.html</loc>
-<lastmod>2017-04-23T10:01:00-00:01</lastmod>
+<loc>http://coderobot.downley.net/tag/devops.html</loc>
+<lastmod>2017-01-01T10:39:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://coderobot.downley.net/tag/nose.html</loc>
+<lastmod>2015-12-22T00:33:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -578,8 +585,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://coderobot.downley.net/tag/nose.html</loc>
-<lastmod>2015-12-22T00:33:00-00:01</lastmod>
+<loc>http://coderobot.downley.net/tag/architecture.html</loc>
+<lastmod>2017-04-23T10:01:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
