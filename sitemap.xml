@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/</loc>
-<lastmod>2017-05-06T19:43:24-00:00</lastmod>
+<lastmod>2017-05-06T19:44:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/archives.html</loc>
-<lastmod>2017-05-06T19:43:24-00:00</lastmod>
+<lastmod>2017-05-06T19:44:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/tags.html</loc>
-<lastmod>2017-05-06T19:43:24-00:00</lastmod>
+<lastmod>2017-05-06T19:44:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/categories.html</loc>
-<lastmod>2017-05-06T19:43:24-00:00</lastmod>
+<lastmod>2017-05-06T19:44:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://coderobot.downley.net/pages/about.html</loc>
-<lastmod>2017-05-06T19:43:24-00:00</lastmod>
+<lastmod>2017-05-06T19:44:58-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -333,8 +333,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://coderobot.downley.net/tag/unittest.html</loc>
-<lastmod>2015-12-21T22:28:00-00:01</lastmod>
+<loc>http://coderobot.downley.net/tag/fish.html</loc>
+<lastmod>2017-05-06T19:36:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -362,7 +362,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://coderobot.downley.net/tag/vim.html</loc>
-<lastmod>2016-01-06T23:49:00-00:01</lastmod>
+<lastmod>2017-05-06T19:36:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -403,8 +403,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://coderobot.downley.net/tag/virtualenv.html</loc>
+<lastmod>2017-05-06T19:36:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://coderobot.downley.net/tag/zipzipbooks.html</loc>
 <lastmod>2015-06-14T11:25:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://coderobot.downley.net/tag/productivity.html</loc>
+<lastmod>2017-05-06T19:36:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -468,6 +482,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://coderobot.downley.net/tag/swagger.html</loc>
 <lastmod>2017-02-24T22:55:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://coderobot.downley.net/tag/unittest.html</loc>
+<lastmod>2015-12-21T22:28:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://coderobot.downley.net/tag/nvim.html</loc>
+<lastmod>2017-05-06T19:36:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -545,13 +573,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://coderobot.downley.net/tag/tdd.html</loc>
 <lastmod>2015-12-21T23:19:00-00:01</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://coderobot.downley.net/tag/productivity-fish-nvim-vim-virtualenv.html</loc>
-<lastmod>2017-05-06T19:36:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
